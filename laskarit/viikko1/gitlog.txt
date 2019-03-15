@@ -1,0 +1,113 @@
+commit 3cad55c7de52d5be64af82ac61eb7e74f8f79a24
+Author: Sebastian Sergelius <sebastian.sergelius@helsinki.fi>
+Date:   Fri Mar 15 10:55:44 2019 +0200
+
+    muutoksia
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit ced7b85d9e80ffcb68f2d0c296b813767ea79ce0
+Author: Sebastian Sergelius <sebastian.sergelius@helsinki.fi>
+Date:   Fri Mar 15 10:53:19 2019 +0200
+
+    tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 7559aeb4b6d9a4fe1c7e4bbd8aa0d6d9263d2a3c
+Author: Sebastian Sergelius <sebastian.sergelius@helsinki.fi>
+Date:   Fri Mar 15 10:49:46 2019 +0200
+
+    patch muodossa
+
+ eka.txt    | 2 +-
+ kolmas.txt | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+commit 6d2feda1128c4ec509f2b9099388abdf19947684
+Author: Sebastian Sergelius <sebastian.sergelius@helsinki.fi>
+Date:   Fri Mar 15 10:48:57 2019 +0200
+
+    tiedoston rename
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 42b2710d5edb32e511202fc5a5f9ceb67dc17344
+Author: Sebastian Sergelius <sebastian.sergelius@helsinki.fi>
+Date:   Fri Mar 15 10:48:21 2019 +0200
+
+    toinen.txt poisto
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 0a7ba626f83835b23f14eab761214b8a9e944cf8
+Author: Sebastian Sergelius <sebastian.sergelius@helsinki.fi>
+Date:   Fri Mar 15 10:46:28 2019 +0200
+
+    muutoksia
+
+ tiedosto.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+commit 4c4a5318d87285c0807ff7f0a4f53f1725986cf3
+Author: Sebastian Sergelius <sebastian.sergelius@helsinki.fi>
+Date:   Fri Mar 15 10:45:52 2019 +0200
+
+    lorem ipsum tekstiä
+
+ tiedosto.txt | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+commit f572eb36ef54499f573fbc4a1a4cd4ea7637a8f6
+Author: Sebastian Sergelius <sebastian.sergelius@helsinki.fi>
+Date:   Fri Mar 15 10:44:06 2019 +0200
+
+    alikansion luonti
+
+ stuff/stuff.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 94ff18210e9bdca0ee7188c44f14562189d1871c
+Author: Sebastian Sergelius <sebastian.sergelius@helsinki.fi>
+Date:   Fri Mar 15 10:43:52 2019 +0200
+
+    tiedostoon muutoksia
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit e68287237f5473b54ac7db8a58917471e7a21454
+Author: Sebastian Sergelius <sebastian.sergelius@helsinki.fi>
+Date:   Fri Mar 15 10:42:51 2019 +0200
+
+    kolmas tiedosto
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit da3e163f48a0dc124d4de3594047cc0b20293083
+Author: Sebastian Sergelius <sebastian.sergelius@helsinki.fi>
+Date:   Fri Mar 15 10:41:36 2019 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit dc819ff723ddaaebd2a09ceee5c31a85372de672
+Author: Sebastian Sergelius <sebastian.sergelius@helsinki.fi>
+Date:   Fri Mar 15 10:40:45 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
