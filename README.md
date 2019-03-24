@@ -1,10 +1,10 @@
-# Ohjelmistotekniikka - harjoitustyö
+# Ohjelmistotekniikka - SUDOKU
 
-Tämä repo tulee sisältämään ohjelmistotekniikan laskarit ja harjoitustyön.
+Sovelluksen avulla käyttäjä pystyy pelaamaan sudoku peliä omalla tietokoneellaan. Käyttäjä pystyy tallettaa keskeneräisen pelin ja jatkamaan myöhemmin kyseistä peliä. Pelien vaikeusasteet ovat helppo, kohtalainen ja vaikea. Käyttäjä pystyy halutessaan ratkaista pelin nappia painamalla.
 
-_Harjoitustyön aihetta **ei** ole vielä päätetty_
+## Dokumentaatio
 
-**Hommat on kesken!**
+[Vaatimuusmäärittely]
 
 ## Tehtävät
 
