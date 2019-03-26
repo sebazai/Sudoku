@@ -15,7 +15,7 @@ public class Sudoku {
     int removeNumbers;
     public Sudoku(int difficulty) {
         playableSudoku = new int[9][9];
-        if(difficulty == 1) {
+        if (difficulty == 1) {
             removeNumbers = 25;
         } else if (difficulty == 2) {
             removeNumbers = 35;
@@ -30,20 +30,20 @@ public class Sudoku {
     }
     
     private void fillBoxesDiagonally() {
-        for(int i = 0; i < 9; i=i+3) {
+        for (int i = 0; i < 9; i = i + 3) {
             fillBox(i);
         }
     }
     
     private void fillBox(int rowAndColumn) {
         int number;
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 do {
-                    number = (int) Math.floor(Math.random()*10);
+                    number = (int) Math.floor(Math.random() * 10);
                 } 
                 while (!numberNotInBox(rowAndColumn, number));
-                playableSudoku[rowAndColumn+i][rowAndColumn+j] = number;
+                playableSudoku[rowAndColumn + i][rowAndColumn + j] = number;
             }
         }
     }
@@ -51,20 +51,22 @@ public class Sudoku {
     private boolean numberNotInBox(int rowAndColumn, int number) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if(playableSudoku[i+rowAndColumn][j+rowAndColumn] == number) return false;
+                if (playableSudoku[i + rowAndColumn][j + rowAndColumn] == number) {
+                    return false;
+                }
             }
         }
         return true;
     }
     
     private void fillEmptySquares() {
-        for(int i = 0; i < 9; i++) {
-            for(int j = 0; j < 9; j++) {
-                if(playableSudoku[i][j] == 0) {
-                    for(int number = 1; number <= 9; number++) {
-                        if(checkIfSafe(playableSudoku, i, j, number)) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (playableSudoku[i][j] == 0) {
+                    for (int number = 1; number <= 9; number++) {
+                        if (checkIfSafe(playableSudoku, i, j, number)) {
                             playableSudoku[i][j] = number;
-                            if(!solveSudoku(playableSudoku)) {
+                            if (!solveSudoku(playableSudoku)) {
                                 playableSudoku[i][j] = 0;
                             }
                         }
@@ -75,22 +77,30 @@ public class Sudoku {
     }
     
     public boolean checkIfSafe(int[][] sudoku, int row, int column, int number) {
-        for(int i = 0; i < 9; i++) {
-            if(sudoku[row][i] == number) return false;
-            if(sudoku[i][column] == number) return false;
+        for (int i = 0; i < 9; i++) {
+            if (sudoku[row][i] == number) {
+                return false;
+            }
+            if (sudoku[i][column] == number) {
+                return false;
+            }
         }
-        for(int i = row - row % 3; i < row - row % 3 + 3; i++) {
+        for (int i = row - row % 3; i < row - row % 3 + 3; i++) {
             for (int j = column - column % 3; j < column - column % 3 + 3; j++) {
-                if (sudoku[i][j] == number) return false;
+                if (sudoku[i][j] == number) {
+                    return false;
+                }
             }
         }
         return true;
     }
     
     public boolean noSolution(int[][] sudoku) {
-        for(int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if(sudoku[i][j] == 0) return true;
+                if (sudoku[i][j] == 0) {
+                    return true;
+                }
             }
         }
         return false;
@@ -98,15 +108,15 @@ public class Sudoku {
     
     public boolean solveSudoku(int[][] sudoku) {
         boolean noEmptySquares = true;
-        for(int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if(sudoku[i][j] == 0) {
+                if (sudoku[i][j] == 0) {
                     noEmptySquares = false;
-                    for(int number = 1; number <= 9; number++) {
-                        if(checkIfSafe(sudoku, i, j ,number)) {
+                    for (int number = 1; number <= 9; number++) {
+                        if (checkIfSafe(sudoku, i, j, number)) {
                             sudoku[i][j] = number;
                             solveSudoku(sudoku);
-                            if(noSolution(sudoku)) {
+                            if (noSolution(sudoku)) {
                                 sudoku[i][j] = 0;
                             }
                         }
@@ -114,9 +124,11 @@ public class Sudoku {
                     break;
                 }
             }
-            if(!noEmptySquares) break;
+            if (!noEmptySquares) {
+                break;
+            }
         }
-        if(noSolution(sudoku)) {
+        if (noSolution(sudoku)) {
             return false;
         } else {
             return true;
@@ -124,15 +136,15 @@ public class Sudoku {
     }
     
     public void printSudoku() {
-        for(int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             
-            for(int j = 0; j < 9; j++) {
+            for (int j = 0; j < 9; j++) {
                 System.out.print(playableSudoku[i][j] + " ");
-                if(j == 2 || j == 5) {
+                if (j == 2 || j == 5) {
                     System.out.print("|");
                 }
             }   
-            if(i == 2 || i ==5) {
+            if (i == 2 || i == 5) {
                 System.out.println("");
                 System.out.println("-------------------");
             } else {
