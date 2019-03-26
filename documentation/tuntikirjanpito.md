@@ -7,3 +7,5 @@
 |26.3.	|3	|sudoku generaattorin luonti|
 |	|1	|sudoku ratkaisijan luonti|
 |	|0,5	|CheckStyle ja maven jacoco plugarien lisäys|
+|	|2	|Main luokan siirto, refaktorointia ja testejä|
+
