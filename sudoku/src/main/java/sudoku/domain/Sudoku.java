@@ -143,10 +143,4 @@ public class Sudoku {
         System.out.println("");
     }
     
-    public static void main(String[] args) {
-        Sudoku sudoku = new Sudoku(1);
-        sudoku.generateSudoku();
-        sudoku.printSudoku();
-    }
-    
 }
