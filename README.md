@@ -33,15 +33,3 @@ Tiedoston [checkstyle.xml](https://github.com/sebazai/ot-harjoitustyo/blob/maste
 mvn jxr:jxr checkstyle:checkstyle
 ```
 
-## Tehtävät
-
-### Viikko 1
-
-[gitlog.txt](https://github.com/sebazai/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-
-[komentorivi.txt](https://github.com/sebazai/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
-
-### Viikko 2
-[Koodikansio](https://github.com/sebazai/ot-harjoitustyo/blob/master/laskarit/viikko2/)
-
-[JUnit test kuva](https://github.com/sebazai/ot-harjoitustyo/blob/master/laskarit/viikko2/laskari-viikko2-kuva.png)
