@@ -133,11 +133,7 @@ public class Sudoku {
                 break;
             }
         }
-        if (noSolution(sudoku)) {
-            return false;
-        } else {
-            return true;
-        }
+        return !noSolution(sudoku);
     }
     
     public void printSudoku() {
