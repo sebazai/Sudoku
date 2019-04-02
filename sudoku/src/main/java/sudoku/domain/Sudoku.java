@@ -59,6 +59,7 @@ public class Sudoku {
         return true;
     }
     
+    // Fill empty squares in sudoku after filling 3x3 boxes diagonally.
     private void fillEmptySquares() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -77,6 +78,7 @@ public class Sudoku {
     }
     
     public boolean checkIfSafe(int[][] sudoku, int row, int column, int number) {
+        //Check row and column if it contains same number
         for (int i = 0; i < 9; i++) {
             if (sudoku[row][i] == number) {
                 return false;
@@ -85,6 +87,7 @@ public class Sudoku {
                 return false;
             }
         }
+        //Check 3x3 box if it contains same number
         for (int i = row - row % 3; i < row - row % 3 + 3; i++) {
             for (int j = column - column % 3; j < column - column % 3 + 3; j++) {
                 if (sudoku[i][j] == number) {
@@ -95,6 +98,7 @@ public class Sudoku {
         return true;
     }
     
+    //If sudoku matrix contains zero, there's no solution
     public boolean noSolution(int[][] sudoku) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -106,6 +110,7 @@ public class Sudoku {
         return false;
     }
     
+    // Go through the sudoku matrix with backtracking and solve it.
     public boolean solveSudoku(int[][] sudoku) {
         boolean noEmptySquares = true;
         for (int i = 0; i < 9; i++) {
