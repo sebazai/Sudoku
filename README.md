@@ -34,7 +34,7 @@ Kattavuusraportin voit aukaista selaimella, tiedosto sijaitsee _target/site/jaco
 
 #### Checkstyle
 
-Tiedoston [checkstyle.xml](https://github.com/sebazai/ot-harjoitustyo/blob/master/checkstyle.xml) määrittelemät tarkistukset suoritetaan kansiossa sudoku komennolla
+Tiedoston [checkstyle.xml](https://github.com/sebazai/ot-harjoitustyo/blob/master/checkstyle.xml) määrittelemät tarkistukset suoritetaan kansiossa sudoku komennolla, komennon jälkeen tiedosto löytyy kansiosta _/sudoku/target/site/_ nimellä _checkstyle.html_
 
 ```
 mvn jxr:jxr checkstyle:checkstyle
