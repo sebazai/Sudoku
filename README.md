@@ -10,6 +10,13 @@ Sovelluksen avulla käyttäjä pystyy pelaamaan sudoku peliä omalla tietokoneel
 
 ## Komentorivitoiminnot
 
+### Ohjelman ajaminen
+Lataa ZIP tiedosto ja pura se koneellesi. Voit aukaista projektin Netbeans:ssa tai ajaa seuraavan komennon kansiossa "sudoku":
+
+```
+mvn compile exec:java -Dexec.mainClass=sudoku.ui.SudokuUi
+```
+
 ### Testaus
 Testit suoritetaan kansiossa sudoku, komennolla
 
