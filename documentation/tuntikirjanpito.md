@@ -9,3 +9,7 @@
 |	|0,5	|CheckStyle ja maven jacoco plugarien lisäys|
 |	|2	|Main luokan siirto, refaktorointia ja testejä|
 |2.4.	|0,5	|Dokumentaation päivitystä ja koodin siistimistä|
+|3.4.	|2	|JavaFX + Scene Builder tutustuminen|
+|	|3	|JavaFX ja Scenen implementointi sudoku peliin|
+|	|1	|2D arrayn kopioiminen ongelma, korjattu deepCopylla|
+
