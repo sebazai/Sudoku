@@ -5,16 +5,33 @@
  */
 package sudoku.ui;
 
-import sudoku.domain.Sudoku;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 /**
  *
  * @author sebserge
  */
-public class SudokuUi {
+public class SudokuUi extends Application {
+    
+    @Override
+    public void start(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/sudokuboard.fxml"));
+        loader.setController(new FXMLController());
+        Pane root = loader.load();
+        
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Sudoku");
+        scene.getRoot().requestFocus();
+    }
+    
     public static void main(String[] args) {
-        Sudoku sudoku = new Sudoku(1);
-        sudoku.generateSudoku();
-        sudoku.printSudoku();
+        launch(SudokuUi.class);
     }
 }

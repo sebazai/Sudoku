@@ -5,23 +5,58 @@
  */
 package sudoku.domain;
 
+import java.util.Arrays;
+
 /**
  *
  * @author sebserge
  */
 public class Sudoku {
+    int[][] solvedSudoku;
     int[][] playableSudoku;
+    int[][] initialSudoku;
     int size = 9;
     int removeNumbers;
     public Sudoku(int difficulty) {
-        playableSudoku = new int[9][9];
+        solvedSudoku = new int[9+1][9+1];
+        this.generateSudoku();
+        playableSudoku = new int[9+1][9+1];
+        initialSudoku = new int[9+1][9+1];
+        
+        initialSudoku = deepCopy(solvedSudoku);
         if (difficulty == 1) {
-            removeNumbers = 25;
-        } else if (difficulty == 2) {
             removeNumbers = 35;
-        } else {
+        } else if (difficulty == 2) {
             removeNumbers = 45;
+        } else {
+            removeNumbers = 55;
         }
+        removeDigitsFromInitialSudoku();
+    }
+    
+    public static int[][] deepCopy(int[][] original) {
+    if (original == null) {
+        return null;
+    }
+
+    final int[][] result = new int[original.length][];
+    for (int i = 0; i < original.length; i++) {
+        result[i] = Arrays.copyOf(original[i], original[i].length);
+ 
+    }
+    return result;
+}
+    
+    public int[][] getSolvedSudoku() {
+        return solvedSudoku;
+    }
+    
+    public int[][] getPlayableSudoku() {
+        return playableSudoku;
+    }
+    
+    public int[][] getInitialSudoku() {
+        return initialSudoku;
     }
     
     public void generateSudoku() {
@@ -43,7 +78,7 @@ public class Sudoku {
                     number = (int) Math.floor(Math.random() * 10);
                 } 
                 while (!numberNotInBox(rowAndColumn, number));
-                playableSudoku[rowAndColumn + i][rowAndColumn + j] = number;
+                solvedSudoku[rowAndColumn + i][rowAndColumn + j] = number;
             }
         }
     }
@@ -51,7 +86,7 @@ public class Sudoku {
     private boolean numberNotInBox(int rowAndColumn, int number) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (playableSudoku[i + rowAndColumn][j + rowAndColumn] == number) {
+                if (solvedSudoku[i + rowAndColumn][j + rowAndColumn] == number) {
                     return false;
                 }
             }
@@ -63,12 +98,12 @@ public class Sudoku {
     private void fillEmptySquares() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if (playableSudoku[i][j] == 0) {
+                if (solvedSudoku[i][j] == 0) {
                     for (int number = 1; number <= 9; number++) {
-                        if (checkIfSafe(playableSudoku, i, j, number)) {
-                            playableSudoku[i][j] = number;
-                            if (!solveSudoku(playableSudoku)) {
-                                playableSudoku[i][j] = 0;
+                        if (checkIfSafe(solvedSudoku, i, j, number)) {
+                            solvedSudoku[i][j] = number;
+                            if (!solveSudoku(solvedSudoku)) {
+                                solvedSudoku[i][j] = 0;
                             }
                         }
                     }
@@ -99,7 +134,7 @@ public class Sudoku {
     }
     
     //If sudoku matrix contains zero, there's no solution
-    public boolean noSolution(int[][] sudoku) {
+    public boolean sudokuContainsZeros(int[][] sudoku) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (sudoku[i][j] == 0) {
@@ -121,7 +156,7 @@ public class Sudoku {
                         if (checkIfSafe(sudoku, i, j, number)) {
                             sudoku[i][j] = number;
                             solveSudoku(sudoku);
-                            if (noSolution(sudoku)) {
+                            if (sudokuContainsZeros(sudoku)) {
                                 sudoku[i][j] = 0;
                             }
                         }
@@ -133,27 +168,52 @@ public class Sudoku {
                 break;
             }
         }
-        return !noSolution(sudoku);
+        return !sudokuContainsZeros(sudoku);
+    }
+//    
+//    public void printSudoku() {
+//        for (int i = 0; i < 9; i++) {
+//            
+//            for (int j = 0; j < 9; j++) {
+//                System.out.print(playableSudoku[i][j] + " ");
+//                if (j == 2 || j == 5) {
+//                    System.out.print("|");
+//                }
+//            }   
+//            if (i == 2 || i == 5) {
+//                System.out.println("");
+//                System.out.println("-------------------");
+//            } else {
+//                System.out.println("");
+//            }
+//            
+//        }
+//        System.out.println("");
+//    }
+    
+    public void removeDigitsFromInitialSudoku() {
+        int numbersToRemove = removeNumbers; 
+        while (numbersToRemove != 0) 
+        { 
+            int getRandomCell = (int) Math.floor((Math.random()*81+1)); 
+  
+            int i = (getRandomCell/9); 
+            int j = getRandomCell%9; 
+
+ 
+            if (initialSudoku[i][j] != 0) 
+            { 
+                numbersToRemove--; 
+                initialSudoku[i][j] = 0; 
+            } 
+        } 
     }
     
-    public void printSudoku() {
-        for (int i = 0; i < 9; i++) {
-            
-            for (int j = 0; j < 9; j++) {
-                System.out.print(playableSudoku[i][j] + " ");
-                if (j == 2 || j == 5) {
-                    System.out.print("|");
-                }
-            }   
-            if (i == 2 || i == 5) {
-                System.out.println("");
-                System.out.println("-------------------");
-            } else {
-                System.out.println("");
+    public void modifyPlayableSudoku(int val, int row, int col) {
+        if (initialSudoku[row][col] == 0) {
+            if (val >=0 && val <= 9) {
+                playableSudoku[row][col] = val;
             }
-            
         }
-        System.out.println("");
     }
-    
 }

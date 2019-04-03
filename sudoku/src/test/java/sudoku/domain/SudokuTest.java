@@ -72,18 +72,24 @@ public class SudokuTest {
 
     @Test
     public void generateAndCheckSudoku() {
-        sudoku.generateSudoku();
         boolean sudokuWorks = true;
         // Go through the whole sudoku 9*9 and see if the generated sudoku is valid.
         for(int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 // Take the number in the generated sudoku
-                int number = sudoku.playableSudoku[i][j];
+                int number = sudoku.solvedSudoku[i][j];
+                sudoku.solvedSudoku[i][j] = 0;
                 // Assign it to zero and check if it can be placed there
-                sudoku.playableSudoku[i][j] = 0;
-                if(!sudoku.checkIfSafe(sudoku.playableSudoku, i, j, number)) sudokuWorks = false;
+                if(!sudoku.checkIfSafe(sudoku.solvedSudoku, i, j, number)) {
+                    sudokuWorks = false;
+                }
+                sudoku.solvedSudoku[i][j] = number;
             }
         }
         assertTrue(sudokuWorks);
+    }
+    @Test
+    public void generateSudokuAndCheckIfZeros() {
+        assertFalse(sudoku.sudokuContainsZeros(sudoku.solvedSudoku));
     }
 }
