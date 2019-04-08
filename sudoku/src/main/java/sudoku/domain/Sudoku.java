@@ -11,7 +11,7 @@ import java.util.Arrays;
  *
  * @author sebserge
  */
-public class Sudoku {
+public final class Sudoku {
     int[][] solvedSudoku;
     int[][] playableSudoku;
     int[][] initialSudoku;
@@ -170,26 +170,6 @@ public class Sudoku {
         }
         return !sudokuContainsZeros(sudoku);
     }
-//    
-//    public void printSudoku() {
-//        for (int i = 0; i < 9; i++) {
-//            
-//            for (int j = 0; j < 9; j++) {
-//                System.out.print(playableSudoku[i][j] + " ");
-//                if (j == 2 || j == 5) {
-//                    System.out.print("|");
-//                }
-//            }   
-//            if (i == 2 || i == 5) {
-//                System.out.println("");
-//                System.out.println("-------------------");
-//            } else {
-//                System.out.println("");
-//            }
-//            
-//        }
-//        System.out.println("");
-//    }
     
     public void removeDigitsFromInitialSudoku() {
         int numbersToRemove = removeNumbers; 
