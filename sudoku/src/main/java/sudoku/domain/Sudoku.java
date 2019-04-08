@@ -18,10 +18,10 @@ public class Sudoku {
     int size = 9;
     int removeNumbers;
     public Sudoku(int difficulty) {
-        solvedSudoku = new int[9+1][9+1];
+        solvedSudoku = new int[9 + 1][9 + 1];
         this.generateSudoku();
-        playableSudoku = new int[9+1][9+1];
-        initialSudoku = new int[9+1][9+1];
+        playableSudoku = new int[9 + 1][9 + 1];
+        initialSudoku = new int[9 + 1][9 + 1];
         
         initialSudoku = deepCopy(solvedSudoku);
         if (difficulty == 1) {
@@ -35,17 +35,17 @@ public class Sudoku {
     }
     
     public static int[][] deepCopy(int[][] original) {
-    if (original == null) {
-        return null;
-    }
+        if (original == null) {
+            return null;
+        }
 
-    final int[][] result = new int[original.length][];
-    for (int i = 0; i < original.length; i++) {
-        result[i] = Arrays.copyOf(original[i], original[i].length);
- 
+        final int[][] result = new int[original.length][];
+        for (int i = 0; i < original.length; i++) {
+            result[i] = Arrays.copyOf(original[i], original[i].length);
+
+        }
+        return result;
     }
-    return result;
-}
     
     public int[][] getSolvedSudoku() {
         return solvedSudoku;
@@ -193,16 +193,14 @@ public class Sudoku {
     
     public void removeDigitsFromInitialSudoku() {
         int numbersToRemove = removeNumbers; 
-        while (numbersToRemove != 0) 
-        { 
-            int getRandomCell = (int) Math.floor((Math.random()*81+1)); 
+        while (numbersToRemove != 0) { 
+            int getRandomCell = (int) Math.floor((Math.random() * 81 + 1)); 
   
-            int i = (getRandomCell/9); 
-            int j = getRandomCell%9; 
+            int i = (getRandomCell / 9); 
+            int j = getRandomCell % 9; 
 
  
-            if (initialSudoku[i][j] != 0) 
-            { 
+            if (initialSudoku[i][j] != 0) { 
                 numbersToRemove--; 
                 initialSudoku[i][j] = 0; 
             } 
@@ -211,7 +209,7 @@ public class Sudoku {
     
     public void modifyPlayableSudoku(int val, int row, int col) {
         if (initialSudoku[row][col] == 0) {
-            if (val >=0 && val <= 9) {
+            if (val >= 0 && val <= 9) {
                 playableSudoku[row][col] = val;
             }
         }
