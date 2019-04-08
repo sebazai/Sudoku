@@ -12,4 +12,5 @@
 |3.4.	|2	|JavaFX + Scene Builder tutustuminen|
 |	|3	|JavaFX ja Scenen implementointi sudoku peliin|
 |	|1	|2D arrayn kopioiminen ongelma, korjattu deepCopylla|
-
+|8.4.	|0,5	|Checkstyle, Jacoco excludet ja koodin siistimistä|
+|yht.	|15,5	|
