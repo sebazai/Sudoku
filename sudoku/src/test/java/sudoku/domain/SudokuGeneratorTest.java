@@ -122,5 +122,30 @@ public class SudokuGeneratorTest {
         }
         assertFalse(emptySquares);
     }
+    
+    @Test
+    public void fillEmptySquaresCantFillEmptySquares() {
+        boolean emptySquares = false;
+        generator.solvedSudoku = new int[][]{
+            {0,2,0,4,5,6,7,8,9},
+            {4,5,6,7,8,9,1,2,3},
+            {7,8,9,1,2,3,4,5,6},
+            {3,1,2,6,4,5,9,7,8},
+            {6,4,5,9,7,8,3,1,2},
+            {9,7,8,3,1,2,6,4,5},
+            {1,3,0,5,6,4,8,9,7},
+            {5,6,4,8,9,7,2,3,1},
+            {8,9,7,2,3,1,5,6,4},
+        };
+        generator.fillEmptySquares();
+        for (int i = 0; i < 9 ; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (generator.solvedSudoku[i][j] == 0) {
+                    emptySquares = true;
+                }
+            } 
+        }
+        assertTrue(emptySquares);
+    }
 
 }
