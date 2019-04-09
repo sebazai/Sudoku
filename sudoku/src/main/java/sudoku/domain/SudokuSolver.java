@@ -12,16 +12,34 @@ package sudoku.domain;
 public class SudokuSolver {
         
     public boolean checkIfSafe(int[][] sudoku, int row, int column, int number) {
-        //Check row and column if it contains same number
+        boolean rowSafe = checkIfRowSafe(sudoku, row, number);
+        boolean columnSafe = checkIfColumnSafe(sudoku, column, number);
+        boolean boxSafe = checkIfBoxSafe(sudoku, row, column, number);
+        if (rowSafe && columnSafe && boxSafe) {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean checkIfRowSafe(int[][] sudoku, int row, int number) {
         for (int i = 0; i < 9; i++) {
             if (sudoku[row][i] == number) {
                 return false;
             }
+        }
+        return true;
+    }
+    
+    public boolean checkIfColumnSafe(int[][] sudoku, int column, int number) {
+        for (int i = 0; i < 9; i++) {
             if (sudoku[i][column] == number) {
                 return false;
             }
         }
-        //Check 3x3 box if it contains same number
+        return true;
+    }
+    
+    public boolean checkIfBoxSafe(int[][] sudoku, int row, int column, int number) {
         for (int i = row - row % 3; i < row - row % 3 + 3; i++) {
             for (int j = column - column % 3; j < column - column % 3 + 3; j++) {
                 if (sudoku[i][j] == number) {
