@@ -23,13 +23,13 @@ public class SudokuGenerator {
         return solvedSudoku;
     }
     
-    private void fillBoxesDiagonally() {
+    public void fillBoxesDiagonally() {
         for (int i = 0; i < 9; i = i + 3) {
             fillBox(i);
         }
     }
     
-    private void fillBox(int rowAndColumn) {
+    public void fillBox(int rowAndColumn) {
         int number;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -42,7 +42,7 @@ public class SudokuGenerator {
         }
     }
     
-    private boolean numberNotInBox(int rowAndColumn, int number) {
+    public boolean numberNotInBox(int rowAndColumn, int number) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (solvedSudoku[i + rowAndColumn][j + rowAndColumn] == number) {
@@ -54,7 +54,7 @@ public class SudokuGenerator {
     }
     
     // Fill empty squares in sudoku after filling 3x3 boxes diagonally.
-    private void fillEmptySquares() {
+    public void fillEmptySquares() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (solvedSudoku[i][j] == 0) {

@@ -43,26 +43,26 @@ public class SudokuTest {
     public void tearDown() {
     }
     
-    @Test
-    public void generateAndCheckSudoku() {
-        boolean sudokuWorks = true;
-        // Go through the whole sudoku 9*9 and see if the generated sudoku is valid.
-        for(int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                // Take the number in the generated sudoku
-                int number = sudoku.solvedSudoku[i][j];
-                sudoku.solvedSudoku[i][j] = 0;
-                // Assign it to zero and check if it can be placed there
-                if(!solver.checkIfSafe(sudoku.solvedSudoku, i, j, number)) {
-                    sudokuWorks = false;
-                }
-                sudoku.solvedSudoku[i][j] = number;
-            }
-        }
-        assertTrue(sudokuWorks);
-    }
-    @Test
-    public void generateSudokuAndCheckIfZeros() {
-        assertFalse(solver.sudokuContainsZeros(sudoku.solvedSudoku));
-    }
+//    @Test
+//    public void generateAndCheckSudoku() {
+//        boolean sudokuWorks = true;
+//        // Go through the whole sudoku 9*9 and see if the generated sudoku is valid.
+//        for(int i = 0; i < 9; i++) {
+//            for (int j = 0; j < 9; j++) {
+//                // Take the number in the generated sudoku
+//                int number = sudoku.solvedSudoku[i][j];
+//                sudoku.solvedSudoku[i][j] = 0;
+//                // Assign it to zero and check if it can be placed there
+//                if(!solver.checkIfSafe(sudoku.solvedSudoku, i, j, number)) {
+//                    sudokuWorks = false;
+//                }
+//                sudoku.solvedSudoku[i][j] = number;
+//            }
+//        }
+//        assertTrue(sudokuWorks);
+//    }
+//    @Test
+//    public void generateSudokuAndCheckIfZeros() {
+//        assertFalse(solver.sudokuContainsZeros(sudoku.solvedSudoku));
+//    }
 }
