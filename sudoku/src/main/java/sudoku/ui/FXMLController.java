@@ -26,7 +26,7 @@ public class FXMLController implements Initializable {
     
     @Override
     public void initialize(URL argument0, ResourceBundle argument1) {
-        gameboard = new Sudoku(1);
+        gameboard = new Sudoku(35);
         GraphicsContext context = canvas.getGraphicsContext2D();
         drawOnCanvas(context);
         selected_row = 0;
