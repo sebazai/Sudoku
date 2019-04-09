@@ -19,6 +19,15 @@ Lataa ZIP tiedosto ja pura se koneellesi. Voit aukaista projektin Netbeans:ssa t
 mvn compile exec:java -Dexec.mainClass=sudoku.ui.SudokuUi
 ```
 
+Komento
+
+```
+mvn package
+```
+
+generoi hakemistoon _target_ suoritettavan jar-tiedoston _sudoku-1.0-SNAPSHOT.jar_
+
+
 ### Testaus
 Testit suoritetaan kansiossa sudoku, komennolla
 
