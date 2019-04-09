@@ -18,6 +18,8 @@ import static org.junit.Assert.*;
  */
 public class SudokuTest {
     Sudoku sudoku;
+    SudokuGenerator generator;
+    SudokuSolver solver;
     public SudokuTest() {
     }
     
@@ -31,45 +33,16 @@ public class SudokuTest {
     
     @Before
     public void setUp() {
-        sudoku = new Sudoku(1);
+        sudoku = new Sudoku(35);
+        generator = new SudokuGenerator();
+        solver = new SudokuSolver();
+        
     }
     
     @After
     public void tearDown() {
     }
     
-    @Test
-    public void checkIfSafeMethodWorksAsFalse() {
-        int[][] fakeSudoku = new int[][]{
-            {1,2,3,4,5,6,7,8,9},
-            {4,5,6,7,8,9,1,2,3},
-            {7,8,9,1,2,3,4,5,6},
-            {0,0,0,0,0,0,0,0,0},
-            {0,9,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-        };
-        assertFalse(sudoku.checkIfSafe(fakeSudoku, 0, 4, 9));
-    }
-    
-    @Test
-    public void checkIfSafeMethodReturnsTrue() {
-        int[][] fakeSudoku = new int[][]{
-            {1,2,3,4,5,6,7,8,9},
-            {4,5,6,7,8,9,1,2,3},
-            {7,8,9,1,2,3,4,5,6},
-            {0,0,0,0,0,0,0,0,0},
-            {0,9,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-        };
-        assertTrue(sudoku.checkIfSafe(fakeSudoku, 8, 0, 6));
-    }
-
     @Test
     public void generateAndCheckSudoku() {
         boolean sudokuWorks = true;
@@ -80,7 +53,7 @@ public class SudokuTest {
                 int number = sudoku.solvedSudoku[i][j];
                 sudoku.solvedSudoku[i][j] = 0;
                 // Assign it to zero and check if it can be placed there
-                if(!sudoku.checkIfSafe(sudoku.solvedSudoku, i, j, number)) {
+                if(!solver.checkIfSafe(sudoku.solvedSudoku, i, j, number)) {
                     sudokuWorks = false;
                 }
                 sudoku.solvedSudoku[i][j] = number;
@@ -90,6 +63,6 @@ public class SudokuTest {
     }
     @Test
     public void generateSudokuAndCheckIfZeros() {
-        assertFalse(sudoku.sudokuContainsZeros(sudoku.solvedSudoku));
+        assertFalse(solver.sudokuContainsZeros(sudoku.solvedSudoku));
     }
 }
