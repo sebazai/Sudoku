@@ -2,7 +2,17 @@
 
 ## Rakenne
 
+Ohjelman rakenne noudattaa kaksitasoista kerrosarkkitehtuuria. Koodin pakkausrakenne on seuraavanlainen:
+
+
+<img src="https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/kuvat/pakkauskaavio.png">
+
+
+Pakkaus _sudoku.ui_ sisältää JavaFX ja Scene Builderilla toteutetun käyttöliittymän ja _sudoku.domain_ sisältää sovelluksen logiikan.
+
 ## Käyttöliittymä
+
+Täydennetään myöhemmin kun saatu kaikki näkymät tehtyä.
 
 ## Sovelluslogiikka
 
