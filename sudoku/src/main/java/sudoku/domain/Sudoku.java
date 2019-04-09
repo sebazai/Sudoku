@@ -15,7 +15,6 @@ public final class Sudoku {
     int[][] solvedSudoku;
     int[][] playableSudoku;
     int[][] initialSudoku;
-    int size = 9;
     int removeNumbers;
     SudokuGenerator generator;
     public Sudoku(int difficulty) {
