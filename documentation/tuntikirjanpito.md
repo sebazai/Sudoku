@@ -13,4 +13,5 @@
 |	|3	|JavaFX ja Scenen implementointi sudoku peliin|
 |	|1	|2D arrayn kopioiminen ongelma, korjattu deepCopylla|
 |8.4.	|0,5	|Checkstyle, Jacoco excludet ja koodin siistimistä|
-|yht.	|15,5	|
+|9.4.	|2,5	|Koodin refaktorointia, siistimistä, testien tekemistä ja dokumentaation päivitystä|
+|yht.	|18	|
