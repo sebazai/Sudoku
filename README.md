@@ -6,6 +6,8 @@ Sovelluksen avulla käyttäjä pystyy pelaamaan sudoku peliä omalla tietokoneel
 
 [Vaatimuusmäärittely](https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/vaatimusmaarittely.md)
 
+[Arkkitehtuurikuvaus](https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/arkkitehtuuri.md)
+
 [Tuntikirjanpito](https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/tuntikirjanpito.md)
 
 ## Komentorivitoiminnot
