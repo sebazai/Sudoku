@@ -19,16 +19,23 @@ public class SudokuUi extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/sudokuboard.fxml"));
-        loader.setController(new FXMLController());
-        Pane root = loader.load();
-        
+        FXMLLoader loadStart = new FXMLLoader(getClass().getResource("/fxml/startscreen.fxml"));
+        loadStart.setController(new StartScreenController());
+        Pane root = loadStart.load();
         Scene scene = new Scene(root);
-
         stage.setScene(scene);
         stage.show();
         stage.setTitle("Sudoku");
-        scene.getRoot().requestFocus();
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/sudokuboard.fxml"));
+//        loader.setController(new FXMLController());
+//        Pane root = loader.load();
+//        
+//        Scene scene = new Scene(root);
+//
+//        stage.setScene(scene);
+//        stage.show();
+//        stage.setTitle("Sudoku");
+//        scene.getRoot().requestFocus();
     }
     
     public static void main(String[] args) {

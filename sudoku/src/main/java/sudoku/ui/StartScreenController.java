@@ -1,112 +1,70 @@
 package sudoku.ui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import sudoku.domain.Sudoku;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
-public class FXMLController implements Initializable {
+
+public class StartScreenController implements Initializable {
     
-    @FXML Button solve;
-    @FXML Button save;
-    @FXML Canvas canvas;
-    
-    Sudoku gameboard;
-    int selected_row;
-    int selected_col;
+    @FXML Button hard;
+    @FXML Button medium;
+    @FXML Button easy;
+    @FXML Button load;
+    FXMLLoader loader;
     
     @Override
     public void initialize(URL argument0, ResourceBundle argument1) {
-        gameboard = new Sudoku(35);
-        GraphicsContext context = canvas.getGraphicsContext2D();
-        drawOnCanvas(context);
-        selected_row = 0;
-        selected_col = 0;
-    }
+        loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/sudokuboard.fxml"));
+        loader.setController(new SudokuBoardController());
+    }    
     
-    public void drawSudokuSquaresOnCanvas(GraphicsContext context) {
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                int pos_y = i * 50 + 3;
-                int pos_x = j * 50 + 3;
-                
-                int width = 44;
-                context.setFill(Color.LIGHTBLUE);
-                context.fillRoundRect(pos_x, pos_y, width, width, 7, 7);
-            }
-        }
-        for(int i = 1; i < 3; i++) {
-            context.strokeLine(0, i*150, 450, i*150);
-            context.strokeLine(i*150, 0, i*150, 450);
-        }
-    }
-    
-    public void drawGeneratedSudokuOnCanvas(GraphicsContext context) {
-        int[][] startSudoku = gameboard.getInitialSudoku();
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                int pos_x = j * 50 + 20;
-                int pos_y = i * 50 + 30;
-                context.setFill(Color.BLACK);
-                context.setFont(new Font(20));
-                if(startSudoku[i][j] != 0) {
-                    context.fillText(Integer.toString(startSudoku[i][j]), pos_x, pos_y);
-                }
-            }
-        }
-    }
-    
-    public void drawOnCanvas(GraphicsContext context) {
-        context.clearRect(0,0,450,450);
-
-        drawSudokuSquaresOnCanvas(context);
-        drawGeneratedSudokuOnCanvas(context);
+    public void startHardGame(ActionEvent event) throws IOException {
+        SudokuBoardController controller = loader.getController();
+        controller.setDifficulty(55);
+        Pane hard = loader.load();
         
-        context.strokeRoundRect(selected_col * 50 + 2, selected_row * 50 + 2, 44, 44, 7, 7);
-
-        int[][] sudoku = gameboard.getPlayableSudoku();
-        for(int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                int pos_y = i * 50 + 30;
-                int pos_x = j * 50 + 20;
-                context.setFill(Color.PURPLE);
-                context.setFont(new Font(20));
-                if(sudoku[i][j] != 0) {
-                    context.fillText(Integer.toString(sudoku[i][j]), pos_x, pos_y);
-                }
-            }
-        }
+        Scene hardSudokuScene = new Scene(hard);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(hardSudokuScene);
+        window.show();   
     }
     
-    public void canvasMouseClicked() {
-		canvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				int mouse_x = (int) event.getX();
-				int mouse_y = (int) event.getY();
-
-				selected_row = (int) (mouse_y / 50);
-				selected_col = (int) (mouse_x / 50); 
-
-				drawOnCanvas(canvas.getGraphicsContext2D());
-			}
-		});
-	}
-    public void buttonPressed(KeyEvent event) {
-       String character = event.getText();     
-       if (event.getCode().isDigitKey()) {
-           gameboard.modifyPlayableSudoku(Integer.parseInt(character), selected_row, selected_col);
-           drawOnCanvas(canvas.getGraphicsContext2D());
-       } 
+    public void startMediumGame(ActionEvent event) throws IOException {
+        SudokuBoardController controller = loader.getController();
+        controller.setDifficulty(45);
+        Pane hard = loader.load();
+        
+        Scene hardSudokuScene = new Scene(hard);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(hardSudokuScene);
+        window.show(); 
+    }
+    
+    public void startEasyGame(ActionEvent event) throws IOException {
+        SudokuBoardController controller = loader.getController();
+        controller.setDifficulty(1);
+        Pane hard = loader.load();
+        
+        Scene hardSudokuScene = new Scene(hard);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(hardSudokuScene);
+        window.show(); 
+    }
+    
+    public void loadGame() {
         
     }
+    
 }

@@ -1,7 +1,9 @@
 package sudoku.ui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,8 +15,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import sudoku.domain.Sudoku;
+import sudoku.domain.SudokuSolver;
 
-public class FXMLController implements Initializable {
+public class SudokuBoardController implements Initializable {
     
     @FXML Button solve;
     @FXML Button save;
@@ -23,14 +26,21 @@ public class FXMLController implements Initializable {
     Sudoku gameboard;
     int selected_row;
     int selected_col;
+    int difficulty;
+    boolean solved;
     
     @Override
     public void initialize(URL argument0, ResourceBundle argument1) {
-        gameboard = new Sudoku(35);
+        gameboard = new Sudoku(difficulty);
         GraphicsContext context = canvas.getGraphicsContext2D();
         drawOnCanvas(context);
         selected_row = 0;
         selected_col = 0;
+        solved = false;
+    }
+    
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
     }
     
     public void drawSudokuSquaresOnCanvas(GraphicsContext context) {
@@ -52,14 +62,31 @@ public class FXMLController implements Initializable {
     
     public void drawGeneratedSudokuOnCanvas(GraphicsContext context) {
         int[][] startSudoku = gameboard.getInitialSudoku();
+        drawSudokuNumbers(context, startSudoku);
+    }
+    
+    public void solveSudokuPressed(ActionEvent event) throws IOException {
+        if (solved) return;
+        this.drawSolvedSudokuOnCanvas(canvas.getGraphicsContext2D());
+        solved = true;
+    }
+    
+    public void drawSolvedSudokuOnCanvas(GraphicsContext context) {
+        int[][] solvedSudoku = gameboard.getSolvedSudoku();
+        context.clearRect(0,0,450,450);
+        drawSudokuSquaresOnCanvas(context);
+        drawSudokuNumbers(context, solvedSudoku);
+    }
+    
+    private void drawSudokuNumbers(GraphicsContext context, int[][] sudoku) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 int pos_x = j * 50 + 20;
                 int pos_y = i * 50 + 30;
                 context.setFill(Color.BLACK);
                 context.setFont(new Font(20));
-                if(startSudoku[i][j] != 0) {
-                    context.fillText(Integer.toString(startSudoku[i][j]), pos_x, pos_y);
+                if(sudoku[i][j] != 0) {
+                    context.fillText(Integer.toString(sudoku[i][j]), pos_x, pos_y);
                 }
             }
         }
@@ -88,25 +115,41 @@ public class FXMLController implements Initializable {
     }
     
     public void canvasMouseClicked() {
-		canvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				int mouse_x = (int) event.getX();
-				int mouse_y = (int) event.getY();
+        canvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            
+                @Override
+                public void handle(MouseEvent event) {
+                    if (solved) return;
+                    int mouse_x = (int) event.getX();
+                    int mouse_y = (int) event.getY();
 
-				selected_row = (int) (mouse_y / 50);
-				selected_col = (int) (mouse_x / 50); 
+                    selected_row = (int) (mouse_y / 50);
+                    selected_col = (int) (mouse_x / 50); 
 
-				drawOnCanvas(canvas.getGraphicsContext2D());
-			}
-		});
-	}
+                    drawOnCanvas(canvas.getGraphicsContext2D());
+                }
+        });
+    }
+    
+    public boolean checkIfSudokuCanvasFilledAndSolved(int[][] playableSudoku, int[][] initialSudoku) {
+        SudokuSolver solver = new SudokuSolver();
+        if(solver.checkIfFilledSudokuIsValid(playableSudoku, initialSudoku)) {
+            return true;
+        }
+        return false;
+    }
+    
     public void buttonPressed(KeyEvent event) {
+       if(solved) {
+           return;
+       }
        String character = event.getText();     
        if (event.getCode().isDigitKey()) {
            gameboard.modifyPlayableSudoku(Integer.parseInt(character), selected_row, selected_col);
            drawOnCanvas(canvas.getGraphicsContext2D());
-       } 
-        
+           if(checkIfSudokuCanvasFilledAndSolved(gameboard.getPlayableSudoku(), gameboard.getInitialSudoku())) {
+               solved = true;
+           }
+       }
     }
 }
