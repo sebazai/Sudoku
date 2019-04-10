@@ -87,4 +87,21 @@ public class SudokuSolver {
         }
         return !sudokuContainsZeros(sudoku);
     }
+    
+    public boolean checkIfFilledSudokuIsValid(int[][] playableSudoku, int[][] initialSudoku) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (playableSudoku[i][j] == 0 && initialSudoku[i][j] != 0) {
+                    playableSudoku[i][j] = initialSudoku[i][j];
+                }
+                int number = playableSudoku[i][j];
+                playableSudoku[i][j] = 0;
+                if (!checkIfSafe(playableSudoku, i, j, number)) {
+                    return false;
+                }
+                playableSudoku[i][j] = number;
+            }
+        }
+        return true;
+    }
 }
