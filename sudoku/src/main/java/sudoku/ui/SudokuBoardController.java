@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -141,6 +143,9 @@ public class SudokuBoardController implements Initializable {
     }
     
     public void buttonPressed(KeyEvent event) {
+       if (event.getCode() == KeyCode.ESCAPE) {
+           Runtime.getRuntime().exit(0);
+       }
        if(solved) {
            return;
        }
@@ -150,6 +155,11 @@ public class SudokuBoardController implements Initializable {
            drawOnCanvas(canvas.getGraphicsContext2D());
            if(checkIfSudokuCanvasFilledAndSolved(gameboard.getPlayableSudoku(), gameboard.getInitialSudoku())) {
                solved = true;
+               Alert alert = new Alert(AlertType.INFORMATION);
+               alert.setTitle("SUDOKU SOLVED - CONGRATULATIONS!");
+               alert.setHeaderText("SOLVED CORRECTLY!");
+               alert.setContentText("You can close the application by pressing ESC.");
+               alert.showAndWait();
            }
        } else if (event.getCode().isNavigationKey()) {
            KeyCode code = event.getCode();
@@ -171,8 +181,6 @@ public class SudokuBoardController implements Initializable {
                }
            }
            drawOnCanvas(canvas.getGraphicsContext2D());
-       } else if (event.getCode() == KeyCode.ESCAPE) {
-           Runtime.getRuntime().exit(0);
        }
     }
 }
