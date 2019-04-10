@@ -31,6 +31,19 @@ Sovelluksen logiikka muodostuu luokista [Sudoku](https://github.com/sebazai/ot-h
 
 <img src="https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/kuvat/luokkakaavio.png">
 
+## Päätoiminnallisuudet
+
+Seuraavaksi kuvataan sovelluksen toimintalogiikkaa sekvenssikaavioiden avulla.
+
+### Pelin käynnistys ja Sudokun aloittaminen
+
+Kun käyttäjä käynnistää ohjelman hän voi valita vaikeusasteen sudokulle, seuraavaksi kuvataan tämän uuden Sudokun luonnin toimintalogiikka ilman graafisen käyttöliityymän komponentteja.
+
+<img src="https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/kuvat/generatingEasySudoku.png">
+
+Sekvenssikaaviossa on pyritty aukaisemaan mahdollisimman tarkasti kuinka sudoku luodaan, valitettavasti koodissa on suuri määrä rekursiokutsuja, joten sekvenssikaavio on näiden osalta hieman puuttellinen.
+
+
 ## Tietojen pysyväistallennus
 
 Lisätään myöhemmin...
