@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -150,6 +151,28 @@ public class SudokuBoardController implements Initializable {
            if(checkIfSudokuCanvasFilledAndSolved(gameboard.getPlayableSudoku(), gameboard.getInitialSudoku())) {
                solved = true;
            }
+       } else if (event.getCode().isNavigationKey()) {
+           KeyCode code = event.getCode();
+           if (code == KeyCode.UP) {
+               if (selected_row > 0) {
+                   selected_row--;
+               }
+           } else if (code == KeyCode.DOWN) {
+               if (selected_row < 8) {
+                   selected_row++;
+               }
+           } else if (code == KeyCode.LEFT) {
+               if (selected_col > 0) {
+                   selected_col--;
+               }
+           } else if (code == KeyCode.RIGHT) {
+                if (selected_col < 8) {
+                   selected_col++;
+               }
+           }
+           drawOnCanvas(canvas.getGraphicsContext2D());
+       } else if (event.getCode() == KeyCode.ESCAPE) {
+           Runtime.getRuntime().exit(0);
        }
     }
 }

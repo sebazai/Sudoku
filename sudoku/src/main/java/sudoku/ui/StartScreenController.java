@@ -54,7 +54,7 @@ public class StartScreenController implements Initializable {
     
     public void startEasyGame(ActionEvent event) throws IOException {
         SudokuBoardController controller = loader.getController();
-        controller.setDifficulty(1);
+        controller.setDifficulty(35);
         Pane hard = loader.load();
         
         Scene hardSudokuScene = new Scene(hard);
