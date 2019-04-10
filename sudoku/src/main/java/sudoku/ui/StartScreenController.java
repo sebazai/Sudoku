@@ -36,7 +36,7 @@ public class StartScreenController implements Initializable {
         Pane hard = loader.load();
         
         Scene hardSudokuScene = new Scene(hard);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(hardSudokuScene);
         window.show();   
     }
@@ -47,7 +47,7 @@ public class StartScreenController implements Initializable {
         Pane hard = loader.load();
         
         Scene hardSudokuScene = new Scene(hard);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(hardSudokuScene);
         window.show(); 
     }
@@ -58,7 +58,7 @@ public class StartScreenController implements Initializable {
         Pane hard = loader.load();
         
         Scene hardSudokuScene = new Scene(hard);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(hardSudokuScene);
         window.show(); 
     }

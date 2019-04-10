@@ -27,8 +27,8 @@ public class SudokuBoardController implements Initializable {
     @FXML Canvas canvas;
     
     Sudoku gameboard;
-    int selected_row;
-    int selected_col;
+    int selectedRow;
+    int selectedCol;
     int difficulty;
     boolean solved;
     
@@ -37,8 +37,8 @@ public class SudokuBoardController implements Initializable {
         gameboard = new Sudoku(difficulty);
         GraphicsContext context = canvas.getGraphicsContext2D();
         drawOnCanvas(context);
-        selected_row = 0;
-        selected_col = 0;
+        selectedRow = 0;
+        selectedCol = 0;
         solved = false;
     }
     
@@ -49,17 +49,17 @@ public class SudokuBoardController implements Initializable {
     public void drawSudokuSquaresOnCanvas(GraphicsContext context) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                int pos_y = i * 50 + 3;
-                int pos_x = j * 50 + 3;
+                int posY = i * 50 + 3;
+                int posX = j * 50 + 3;
                 
                 int width = 44;
                 context.setFill(Color.LIGHTBLUE);
-                context.fillRoundRect(pos_x, pos_y, width, width, 7, 7);
+                context.fillRoundRect(posX, posY, width, width, 7, 7);
             }
         }
-        for(int i = 1; i < 3; i++) {
-            context.strokeLine(0, i*150, 450, i*150);
-            context.strokeLine(i*150, 0, i*150, 450);
+        for (int i = 1; i < 3; i++) {
+            context.strokeLine(0, i * 150, 450, i * 150);
+            context.strokeLine(i * 150, 0, i * 150, 450);
         }
     }
     
@@ -69,14 +69,16 @@ public class SudokuBoardController implements Initializable {
     }
     
     public void solveSudokuPressed(ActionEvent event) throws IOException {
-        if (solved) return;
+        if (solved) {
+            return;
+        }
         this.drawSolvedSudokuOnCanvas(canvas.getGraphicsContext2D());
         solved = true;
     }
     
     public void drawSolvedSudokuOnCanvas(GraphicsContext context) {
         int[][] solvedSudoku = gameboard.getSolvedSudoku();
-        context.clearRect(0,0,450,450);
+        context.clearRect(0, 0, 450, 450);
         drawSudokuSquaresOnCanvas(context);
         drawSudokuNumbers(context, solvedSudoku);
     }
@@ -84,34 +86,34 @@ public class SudokuBoardController implements Initializable {
     private void drawSudokuNumbers(GraphicsContext context, int[][] sudoku) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                int pos_x = j * 50 + 20;
-                int pos_y = i * 50 + 30;
+                int posX = j * 50 + 20;
+                int posY = i * 50 + 30;
                 context.setFill(Color.BLACK);
                 context.setFont(new Font(20));
-                if(sudoku[i][j] != 0) {
-                    context.fillText(Integer.toString(sudoku[i][j]), pos_x, pos_y);
+                if (sudoku[i][j] != 0) {
+                    context.fillText(Integer.toString(sudoku[i][j]), posX, posY);
                 }
             }
         }
     }
     
     public void drawOnCanvas(GraphicsContext context) {
-        context.clearRect(0,0,450,450);
+        context.clearRect(0, 0, 450, 450);
 
         drawSudokuSquaresOnCanvas(context);
         drawGeneratedSudokuOnCanvas(context);
         
-        context.strokeRoundRect(selected_col * 50 + 2, selected_row * 50 + 2, 44, 44, 7, 7);
+        context.strokeRoundRect(selectedCol * 50 + 2, selectedRow * 50 + 2, 44, 44, 7, 7);
 
         int[][] sudoku = gameboard.getPlayableSudoku();
-        for(int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                int pos_y = i * 50 + 30;
-                int pos_x = j * 50 + 20;
+                int posY = i * 50 + 30;
+                int posX = j * 50 + 20;
                 context.setFill(Color.PURPLE);
                 context.setFont(new Font(20));
-                if(sudoku[i][j] != 0) {
-                    context.fillText(Integer.toString(sudoku[i][j]), pos_x, pos_y);
+                if (sudoku[i][j] != 0) {
+                    context.fillText(Integer.toString(sudoku[i][j]), posX, posY);
                 }
             }
         }
@@ -122,12 +124,14 @@ public class SudokuBoardController implements Initializable {
             
                 @Override
                 public void handle(MouseEvent event) {
-                    if (solved) return;
-                    int mouse_x = (int) event.getX();
-                    int mouse_y = (int) event.getY();
+                    if (solved) {
+                        return;
+                    }
+                    int mouseX = (int) event.getX();
+                    int mouseY = (int) event.getY();
 
-                    selected_row = (int) (mouse_y / 50);
-                    selected_col = (int) (mouse_x / 50); 
+                    selectedRow = (int) (mouseY / 50);
+                    selectedCol = (int) (mouseX / 50); 
 
                     drawOnCanvas(canvas.getGraphicsContext2D());
                 }
@@ -136,51 +140,51 @@ public class SudokuBoardController implements Initializable {
     
     public boolean checkIfSudokuCanvasFilledAndSolved(int[][] playableSudoku, int[][] initialSudoku) {
         SudokuSolver solver = new SudokuSolver();
-        if(solver.checkIfFilledSudokuIsValid(playableSudoku, initialSudoku)) {
+        if (solver.checkIfFilledSudokuIsValid(playableSudoku, initialSudoku)) {
             return true;
         }
         return false;
     }
     
     public void buttonPressed(KeyEvent event) {
-       if (event.getCode() == KeyCode.ESCAPE) {
-           Runtime.getRuntime().exit(0);
-       }
-       if(solved) {
-           return;
-       }
-       String character = event.getText();     
-       if (event.getCode().isDigitKey()) {
-           gameboard.modifyPlayableSudoku(Integer.parseInt(character), selected_row, selected_col);
-           drawOnCanvas(canvas.getGraphicsContext2D());
-           if(checkIfSudokuCanvasFilledAndSolved(gameboard.getPlayableSudoku(), gameboard.getInitialSudoku())) {
-               solved = true;
-               Alert alert = new Alert(AlertType.INFORMATION);
-               alert.setTitle("SUDOKU SOLVED - CONGRATULATIONS!");
-               alert.setHeaderText("SOLVED CORRECTLY!");
-               alert.setContentText("You can close the application by pressing ESC.");
-               alert.showAndWait();
-           }
-       } else if (event.getCode().isNavigationKey()) {
-           KeyCode code = event.getCode();
-           if (code == KeyCode.UP) {
-               if (selected_row > 0) {
-                   selected_row--;
-               }
-           } else if (code == KeyCode.DOWN) {
-               if (selected_row < 8) {
-                   selected_row++;
-               }
-           } else if (code == KeyCode.LEFT) {
-               if (selected_col > 0) {
-                   selected_col--;
-               }
-           } else if (code == KeyCode.RIGHT) {
-                if (selected_col < 8) {
-                   selected_col++;
-               }
-           }
-           drawOnCanvas(canvas.getGraphicsContext2D());
-       }
+        if (event.getCode() == KeyCode.ESCAPE) {
+            Runtime.getRuntime().exit(0);
+        }
+        if (solved) {
+            return;
+        }
+        String character = event.getText();     
+        if (event.getCode().isDigitKey()) {
+            gameboard.modifyPlayableSudoku(Integer.parseInt(character), selectedRow, selectedCol);
+            drawOnCanvas(canvas.getGraphicsContext2D());
+            if (checkIfSudokuCanvasFilledAndSolved(gameboard.getPlayableSudoku(), gameboard.getInitialSudoku())) {
+                solved = true;
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("SUDOKU SOLVED - CONGRATULATIONS!");
+                alert.setHeaderText("SOLVED CORRECTLY!");
+                alert.setContentText("You can close the application by pressing ESC.");
+                alert.showAndWait();
+            }
+        } else if (event.getCode().isNavigationKey()) {
+            KeyCode code = event.getCode();
+            if (code == KeyCode.UP) {
+                if (selectedRow > 0) {
+                    selectedRow--;
+                }
+            } else if (code == KeyCode.DOWN) {
+                if (selectedRow < 8) {
+                    selectedRow++;
+                }
+            } else if (code == KeyCode.LEFT) {
+                if (selectedCol > 0) {
+                    selectedCol--;
+                }
+            } else if (code == KeyCode.RIGHT) {
+                if (selectedCol < 8) {
+                    selectedCol++;
+                }
+            }
+            drawOnCanvas(canvas.getGraphicsContext2D());
+        }
     }
 }
