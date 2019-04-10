@@ -44,22 +44,22 @@ public class StartScreenController implements Initializable {
     public void startMediumGame(ActionEvent event) throws IOException {
         SudokuBoardController controller = loader.getController();
         controller.setDifficulty(45);
-        Pane hard = loader.load();
+        Pane medium = loader.load();
         
-        Scene hardSudokuScene = new Scene(hard);
+        Scene mediumSudokuScene = new Scene(medium);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(hardSudokuScene);
+        window.setScene(mediumSudokuScene);
         window.show(); 
     }
     
     public void startEasyGame(ActionEvent event) throws IOException {
         SudokuBoardController controller = loader.getController();
         controller.setDifficulty(35);
-        Pane hard = loader.load();
+        Pane easy = loader.load();
         
-        Scene hardSudokuScene = new Scene(hard);
+        Scene easySudokuScene = new Scene(easy);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(hardSudokuScene);
+        window.setScene(easySudokuScene);
         window.show(); 
     }
     

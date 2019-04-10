@@ -24,8 +24,9 @@ public class SudokuUi extends Application {
         Pane root = loadStart.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.show();
         stage.setTitle("Sudoku");
+        stage.show();
+        
     }
     
     public static void main(String[] args) {
