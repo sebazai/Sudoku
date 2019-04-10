@@ -39,7 +39,7 @@ Seuraavaksi kuvataan sovelluksen toimintalogiikkaa sekvenssikaavioiden avulla.
 
 Kun käyttäjä käynnistää ohjelman hän voi valita vaikeusasteen sudokulle, seuraavaksi kuvataan tämän uuden Sudokun luonnin toimintalogiikka ilman graafisen käyttöliityymän komponentteja.
 
-<img src="https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/kuvat/generatingEasySudoku.png">
+<img src="https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/kuvat/generatingEasySudokuVersion2.png">
 
 Sekvenssikaaviossa on pyritty aukaisemaan mahdollisimman tarkasti kuinka sudoku luodaan, valitettavasti koodissa on suuri määrä rekursiokutsuja, joten sekvenssikaavio on näiden osalta hieman puuttellinen.
 
