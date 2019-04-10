@@ -138,6 +138,34 @@ public class SudokuBoardController implements Initializable {
         });
     }
     
+    public void navigateWithArrowKeys(KeyCode code) {
+        if (code == KeyCode.UP) {
+            if (selectedRow > 0) {
+                selectedRow--;
+            }
+        } else if (code == KeyCode.DOWN) {
+            if (selectedRow < 8) {
+                selectedRow++;
+            }
+        } else if (code == KeyCode.LEFT) {
+            if (selectedCol > 0) {
+                selectedCol--;
+            }
+        } else if (code == KeyCode.RIGHT) {
+            if (selectedCol < 8) {
+                selectedCol++;
+            }
+        }
+    }
+    
+    public void sudokuSolvedAlert() {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("SUDOKU SOLVED - CONGRATULATIONS!");
+        alert.setHeaderText("SOLVED CORRECTLY!");
+        alert.setContentText("You can close the application by pressing ESC.");
+        alert.showAndWait();
+    }
+    
     public boolean checkIfSudokuCanvasFilledAndSolved(int[][] playableSudoku, int[][] initialSudoku) {
         SudokuSolver solver = new SudokuSolver();
         if (solver.checkIfFilledSudokuIsValid(playableSudoku, initialSudoku)) {
@@ -146,7 +174,7 @@ public class SudokuBoardController implements Initializable {
         return false;
     }
     
-    public void buttonPressed(KeyEvent event) {
+    public void keyboardButtonPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ESCAPE) {
             Runtime.getRuntime().exit(0);
         }
@@ -159,31 +187,10 @@ public class SudokuBoardController implements Initializable {
             drawOnCanvas(canvas.getGraphicsContext2D());
             if (checkIfSudokuCanvasFilledAndSolved(gameboard.getPlayableSudoku(), gameboard.getInitialSudoku())) {
                 solved = true;
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("SUDOKU SOLVED - CONGRATULATIONS!");
-                alert.setHeaderText("SOLVED CORRECTLY!");
-                alert.setContentText("You can close the application by pressing ESC.");
-                alert.showAndWait();
+                sudokuSolvedAlert();
             }
         } else if (event.getCode().isNavigationKey()) {
-            KeyCode code = event.getCode();
-            if (code == KeyCode.UP) {
-                if (selectedRow > 0) {
-                    selectedRow--;
-                }
-            } else if (code == KeyCode.DOWN) {
-                if (selectedRow < 8) {
-                    selectedRow++;
-                }
-            } else if (code == KeyCode.LEFT) {
-                if (selectedCol > 0) {
-                    selectedCol--;
-                }
-            } else if (code == KeyCode.RIGHT) {
-                if (selectedCol < 8) {
-                    selectedCol++;
-                }
-            }
+            navigateWithArrowKeys(event.getCode());
             drawOnCanvas(canvas.getGraphicsContext2D());
         }
     }
