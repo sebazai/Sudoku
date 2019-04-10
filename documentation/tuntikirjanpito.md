@@ -14,4 +14,8 @@
 |	|1	|2D arrayn kopioiminen ongelma, korjattu deepCopylla|
 |8.4.	|0,5	|Checkstyle, Jacoco excludet ja koodin siistimistä|
 |9.4.	|2,5	|Koodin refaktorointia, siistimistä, testien tekemistä ja dokumentaation päivitystä|
-|yht.	|18	|
+|10.4.	|2	|JavaFX Scenen vaihtaminen tutustuminen|
+|	|0,5	|Aloitusruudun tekeminen Scenebuilderilla|
+|	|1	|Aloitusruudun kontrollerin tekeminen|
+|	|0,5	|Scenen vaihtaminen ja vaikeusasteen valinnan toteutus|
+|yht.	|22	|
