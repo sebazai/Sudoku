@@ -18,4 +18,6 @@
 |	|0,5	|Aloitusruudun tekeminen Scenebuilderilla|
 |	|1	|Aloitusruudun kontrollerin tekeminen|
 |	|0,5	|Scenen vaihtaminen ja vaikeusasteen valinnan toteutus|
-|yht.	|22	|
+|	|1	|Sekvenssikaavion piirtäminen|
+|	|1	|Koodin siistimistä, dokumentaation päivitystä|
+|yht.	|24	|
