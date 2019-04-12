@@ -27,7 +27,7 @@ Sudoku näkymässä voi navigoida eri ruutuihin hiirellä tai nuolinäppäimiä 
 
 ## Sovelluslogiikka
 
-Sovelluksen logiikka muodostuu luokista [Sudoku](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/domain/Sudoku.java), [SudokuSolver](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/domain/SudokuSolver.java) ja [SudokuGenerator](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/domain/SudokuGenerator.java). Alla luokkakaavio sovelluslogiikasta:
+Sovelluksen logiikka muodostuu luokista [Sudoku](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/domain/Sudoku.java), [SudokuSolver](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/domain/SudokuSolver.java) ja [SudokuGenerator](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/domain/SudokuGenerator.java). Alla luokkakaavio sovelluslogiikasta ja sovelluksen käyttöliittymäluokista, jotka muodostuvat luokista [SudokuUi](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/ui/SudokuUi.java), [StartScreenController](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/ui/StartScreenController.java) ja [SudokuBoardController](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/ui/SudokuBoardController.java):
 
 <img src="https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/kuvat/luokkakaavio.png">
 
