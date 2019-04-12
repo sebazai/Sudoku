@@ -20,5 +20,5 @@
 |	|0,5	|Scenen vaihtaminen ja vaikeusasteen valinnan toteutus|
 |	|1	|Sekvenssikaavion piirtäminen|
 |	|1	|Koodin siistimistä, dokumentaation päivitystä|
-|12.4.	|	|Luokkakaavio päivitystä ja testien tekoa|
+|12.4.	|0,5	|Luokkakaavio päivitystä ja testien tekoa|
 |yht.	|24,5	|
