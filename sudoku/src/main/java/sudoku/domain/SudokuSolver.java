@@ -10,7 +10,17 @@ package sudoku.domain;
  * @author sebserge
  */
 public class SudokuSolver {
-        
+    
+    /**
+    * Method to check if the given number is eligible to add into the given row and column spot.
+    * 
+    * @param    sudoku  any int[][] sudoku array
+    * @param    row     given row in the sudoku array
+    * @param    column  given column in the sudoku array
+    * @param    number  given number to check if it is safe to add into the array
+    * 
+    * @return   true    If the number can be added to the given row and column spot
+    */  
     public boolean checkIfSafe(int[][] sudoku, int row, int column, int number) {
         boolean rowSafe = checkIfRowSafe(sudoku, row, number);
         boolean columnSafe = checkIfColumnSafe(sudoku, column, number);
@@ -21,6 +31,15 @@ public class SudokuSolver {
         return false;
     }
     
+    /**
+     * Check if the number can be added to the given row in the array
+     * 
+     * @param   sudoku  Any given 9x9 sudoku array
+     * @param   row     The row between 0-8 of the array
+     * @param   number  Number to check if it is in the row
+     * 
+     * @return  true    If the given row doesn't contain the number given in the parameter
+     */
     public boolean checkIfRowSafe(int[][] sudoku, int row, int number) {
         for (int i = 0; i < 9; i++) {
             if (sudoku[row][i] == number) {
@@ -29,6 +48,16 @@ public class SudokuSolver {
         }
         return true;
     }
+    
+    /**
+     * Check if the number can be added to the given column in the array
+     * 
+     * @param sudoku    Any given 9x9 sudoku array
+     * @param column    The column between 0-8 of the array
+     * @param number    Number to check if it is in the row
+     * 
+     * @return true     
+     */
     
     public boolean checkIfColumnSafe(int[][] sudoku, int column, int number) {
         for (int i = 0; i < 9; i++) {
@@ -50,6 +79,14 @@ public class SudokuSolver {
         return true;
     }
     
+    /**
+    * Check if the given array contains any zeros.
+    * 
+    * @param    sudoku  any int[][] sudoku array
+    * 
+    * @return   true    If the array doesn't contain the value zero
+    */
+    
     //If sudoku matrix contains zero, there's no solution
     public boolean sudokuContainsZeros(int[][] sudoku) {
         for (int i = 0; i < 9; i++) {
@@ -61,6 +98,14 @@ public class SudokuSolver {
         }
         return false;
     }
+    
+    /**
+    * Solve sudoku array with a backtrack algorithm.
+    * 
+    * @param    sudoku  Any int[][] sudoku array
+    *  
+    * @return   true    If it is solvable
+    */
     
     // Go through the sudoku matrix with backtracking and solve it.
     public boolean solveSudoku(int[][] sudoku) {
@@ -88,6 +133,14 @@ public class SudokuSolver {
         return !sudokuContainsZeros(sudoku);
     }
     
+    /**
+    * Method to check if the generated initial sudoku and playable sudoku combined is a valid sudoku
+    * 
+    * @param    playableSudoku  User filled sudoku board
+    * @param    initialSudoku   Generated sudoku at game start
+    * 
+    * @return   true    If generated sudoku and the played sudoku combined is solved
+    */
     public boolean checkIfFilledSudokuIsValid(int[][] playableSudoku, int[][] initialSudoku) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -104,4 +157,5 @@ public class SudokuSolver {
         }
         return true;
     }
+    
 }
