@@ -31,36 +31,30 @@ public class StartScreenController implements Initializable {
     }    
     
     public void startHardGame(ActionEvent event) throws IOException {
-        SudokuBoardController controller = loader.getController();
-        controller.setDifficulty(55);
-        Pane hard = loader.load();
-        
-        Scene hardSudokuScene = new Scene(hard);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(hardSudokuScene);
-        window.show();   
+        startGame(window, 55);
     }
     
     public void startMediumGame(ActionEvent event) throws IOException {
-        SudokuBoardController controller = loader.getController();
-        controller.setDifficulty(45);
-        Pane medium = loader.load();
-        
-        Scene mediumSudokuScene = new Scene(medium);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(mediumSudokuScene);
-        window.show(); 
+        startGame(window, 45);
     }
     
     public void startEasyGame(ActionEvent event) throws IOException {
-        SudokuBoardController controller = loader.getController();
-        controller.setDifficulty(1);
-        Pane easy = loader.load();
-        
-        Scene easySudokuScene = new Scene(easy);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(easySudokuScene);
-        window.show(); 
+        startGame(window, 35);
+    }
+    
+        
+    public void startGame(Stage window, int difficulty) throws IOException {
+        SudokuBoardController controller = loader.getController();
+        controller.setDifficulty(difficulty);
+        Pane pane = loader.load();
+        
+        Scene sudokuScene = new Scene(pane);
+
+        window.setScene(sudokuScene);
+        window.show();  
     }
     
     public void loadGame() {
