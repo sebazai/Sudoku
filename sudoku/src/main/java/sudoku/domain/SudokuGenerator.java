@@ -5,29 +5,41 @@
  */
 package sudoku.domain;
 
-/**
- *
- * @author sebserge
- */
+
 public class SudokuGenerator {
     int[][] solvedSudoku;
     SudokuSolver solver;
+
     public SudokuGenerator() {
         solvedSudoku = new int[9 + 1][9 + 1];
         solver = new SudokuSolver();
     }
     
+    /**
+     * Generates a sudoku in the solvedSudoku array
+     * 
+     * @return int[][] solvedSudoku array 
+     */
     public int[][] generateSudoku() {
         fillBoxesDiagonally();
         fillEmptySquares();
         return solvedSudoku;
     }
     
+    
+    /**
+     * Fills the top left, middle and bottom right 3x3 sudoku box
+     */
     public void fillBoxesDiagonally() {
         for (int i = 0; i < 9; i = i + 3) {
             fillBox(i);
         }
     }
+    
+    /**
+     * Method used to fill the 3x3 box with numbers 1-9
+     * @param rowAndColumn the row and column number of the box top left corner
+     */
     
     public void fillBox(int rowAndColumn) {
         int number;
@@ -41,6 +53,13 @@ public class SudokuGenerator {
             }
         }
     }
+    /**
+     * Checks if the given number is currently not in the 3x3 box
+     * 
+     * @param rowAndColumn the row and column number of the box top left corner
+     * @param number    number to be checked if it is in the 3x3 box
+     * @return  true    if the number given is not in the box
+     */
     
     public boolean numberNotInBox(int rowAndColumn, int number) {
         for (int i = 0; i < 3; i++) {
@@ -53,7 +72,10 @@ public class SudokuGenerator {
         return true;
     }
     
-    // Fill empty squares in sudoku after filling 3x3 boxes diagonally.
+    
+    /**
+     * Method used to fill all the empty squares by trial and error after calling fillBoxesDiagonally
+     */
     public void fillEmptySquares() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
