@@ -42,10 +42,20 @@ public class SudokuBoardController implements Initializable {
         solved = false;
     }
     
+    
+    /**
+     * Number of digits to remove from the gameboard
+     * @param difficulty  number of digits to remove
+     */
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
     
+    
+    /**
+     * Draw the 9x9 board on the 450x450 px canvas
+     * @param context   Canvas GraphicsContext2D
+     */
     public void drawSudokuSquaresOnCanvas(GraphicsContext context) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -63,11 +73,21 @@ public class SudokuBoardController implements Initializable {
         }
     }
     
+    
+    /**
+     * Draw the initialSudoku array numbers into the canvas
+     * @param context Canvas GraphicsContext2D
+     */
     public void drawGeneratedSudokuOnCanvas(GraphicsContext context) {
         int[][] startSudoku = gameboard.getInitialSudoku();
         drawSudokuNumbers(context, startSudoku);
     }
     
+    /**
+     * Event handler for solve sudoku button. Solves the sudoku.
+     * @param event Solve sudoku button
+     * @throws IOException 
+     */
     public void solveSudokuPressed(ActionEvent event) throws IOException {
         if (solved) {
             return;
@@ -76,6 +96,10 @@ public class SudokuBoardController implements Initializable {
         solved = true;
     }
     
+    /**
+     * Draws the solved sudoku on the 450x450 px canvaas board
+     * @param context Canvas GraphicsContext2D
+     */
     public void drawSolvedSudokuOnCanvas(GraphicsContext context) {
         int[][] solvedSudoku = gameboard.getSolvedSudoku();
         context.clearRect(0, 0, 450, 450);
@@ -83,6 +107,11 @@ public class SudokuBoardController implements Initializable {
         drawSudokuNumbers(context, solvedSudoku);
     }
     
+    /**
+     * Method to draw the numbers 1-9 from the array in the parameter on the canvas
+     * @param context   Canvas GraphicsContext2D
+     * @param sudoku    The 2D array of numbers to draw
+     */
     private void drawSudokuNumbers(GraphicsContext context, int[][] sudoku) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -96,6 +125,11 @@ public class SudokuBoardController implements Initializable {
             }
         }
     }
+    
+    /**
+     * The main method to build/update the gameboard by adding the 9x9 squares and drawing the initialSudoku array and the user added numbers playableSudoku array
+     * @param context   Canvas GraphicsContext2D
+     */
     
     public void drawOnCanvas(GraphicsContext context) {
         context.clearRect(0, 0, 450, 450);
@@ -119,6 +153,9 @@ public class SudokuBoardController implements Initializable {
         }
     }
     
+    /**
+     * Event handler to check if playing by mouse
+     */
     public void canvasMouseClicked() {
         canvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
             
@@ -138,6 +175,10 @@ public class SudokuBoardController implements Initializable {
         });
     }
     
+    /**
+     * Method to navigate using arrow keys.
+     * @param code  KeyCode UP, DOWN, LEFT, RIGHT
+     */
     public void navigateWithArrowKeys(KeyCode code) {
         if (code == KeyCode.UP) {
             if (selectedRow > 0) {
@@ -158,6 +199,9 @@ public class SudokuBoardController implements Initializable {
         }
     }
     
+    /**
+     * Alert user if he won the game
+     */
     public void sudokuSolvedAlert() {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("SUDOKU SOLVED - CONGRATULATIONS!");
@@ -166,6 +210,12 @@ public class SudokuBoardController implements Initializable {
         alert.showAndWait();
     }
     
+    /**
+     * Checks if the initialSudoku + playableSudoku together is a valid solved sudoku
+     * @param playableSudoku    The user filled numbers on the board
+     * @param initialSudoku     The generated sudoku
+     * @return  true    if playableSudoku and initialSudoku arrays combined is a valid sudoku
+     */
     public boolean checkIfSudokuCanvasFilledAndSolved(int[][] playableSudoku, int[][] initialSudoku) {
         SudokuSolver solver = new SudokuSolver();
         if (solver.checkIfFilledSudokuIsValid(playableSudoku, initialSudoku)) {
@@ -174,6 +224,10 @@ public class SudokuBoardController implements Initializable {
         return false;
     }
     
+    /**
+     * Event handler to see if any keyboard button is pressed. Used keys are ESCAPE to quit game, digit keys to add number into the square and arrow keys to navigate the squares.
+     * @param event    KeyEvent from keyboard
+     */
     public void keyboardButtonPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ESCAPE) {
             Runtime.getRuntime().exit(0);
