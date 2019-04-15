@@ -21,4 +21,5 @@
 |	|1	|Sekvenssikaavion piirtäminen|
 |	|1	|Koodin siistimistä, dokumentaation päivitystä|
 |12.4.	|0,5	|Luokkakaavio päivitystä ja testien tekoa|
-|yht.	|24,5	|
+|15.4.	|1	|JavaDoc ja koodin siistimistä|
+|yht.	|25,5	|
