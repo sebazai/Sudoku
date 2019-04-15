@@ -17,6 +17,9 @@ import javafx.stage.Stage;
  */
 public class SudokuUi extends Application {
     
+    /**
+     * Loads the startscreen.fxml UI and sets the start scene.
+     */
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loadStart = new FXMLLoader(getClass().getResource("/fxml/startscreen.fxml"));
@@ -29,6 +32,9 @@ public class SudokuUi extends Application {
         
     }
     
+    /**
+     * Main method to launch the UI
+     */
     public static void main(String[] args) {
         launch(SudokuUi.class);
     }
