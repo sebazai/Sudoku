@@ -19,6 +19,8 @@ public class SudokuUi extends Application {
     
     /**
      * Loads the startscreen.fxml UI and sets the start scene.
+     * @param stage
+     * @throws java.lang.Exception
      */
     @Override
     public void start(Stage stage) throws Exception {
@@ -34,6 +36,7 @@ public class SudokuUi extends Application {
     
     /**
      * Main method to launch the UI
+     * @param args
      */
     public static void main(String[] args) {
         launch(SudokuUi.class);
