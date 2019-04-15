@@ -42,6 +42,11 @@ public final class Sudoku {
         return initialSudoku;
     }
         
+    /**
+     * Copy an 2D array to a new 2D array
+     * @param original  The 2D array to be copied
+     * @return  a copy of the original array
+     */
     public int[][] deepCopy(int[][] original) {
         final int[][] result = new int[original.length][];
         for (int i = 0; i < original.length; i++) {
@@ -52,6 +57,10 @@ public final class Sudoku {
     }
     
     
+    /**
+     * Removes x number of digits from the solved sudoku array and adds them to initialSudoku array
+     * @param difficulty    number of digits to be removed
+     */
     public void removeDigitsFromInitialSudoku(int difficulty) {
         removeNumbers = difficulty;
         int numbersToRemove = removeNumbers; 
