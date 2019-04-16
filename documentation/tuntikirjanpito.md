@@ -22,5 +22,5 @@
 |	|1	|Koodin siistimistä, dokumentaation päivitystä|
 |12.4.	|0,5	|Luokkakaavio päivitystä ja testien tekoa|
 |15.4.	|1	|JavaDoc ja koodin siistimistä|
-|16.5.	|0,5	|Releasen teko ja viikon 5 asioiden läpikäynti|
+|16.4.	|0,5	|Releasen teko ja viikon 5 asioiden läpikäynti|
 |yht.	|26	|
