@@ -10,6 +10,13 @@ Sovelluksen avulla käyttäjä pystyy pelaamaan sudoku peliä omalla tietokoneel
 
 [Tuntikirjanpito](https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/tuntikirjanpito.md)
 
+## Releaset
+
+### Viikko 5
+
+[V. 1.0](https://github.com/sebazai/ot-harjoitustyo/releases/tag/v1.0)
+
+
 ## Komentorivitoiminnot
 
 ### Ohjelman ajaminen
