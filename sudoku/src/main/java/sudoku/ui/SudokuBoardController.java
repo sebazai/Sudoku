@@ -2,7 +2,10 @@ package sudoku.ui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import sudoku.dao.SudokuDao;
 import sudoku.domain.Sudoku;
 import sudoku.domain.SudokuSolver;
 
@@ -31,10 +35,15 @@ public class SudokuBoardController implements Initializable {
     int selectedCol;
     int difficulty;
     boolean solved;
+    SudokuDao dao;
+
+    SudokuBoardController(Sudoku get) {
+        gameboard = get;
+    }
     
     @Override
     public void initialize(URL argument0, ResourceBundle argument1) {
-        gameboard = new Sudoku(difficulty);
+//        gameboard = new Sudoku(difficulty);
         GraphicsContext context = canvas.getGraphicsContext2D();
         drawOnCanvas(context);
         selectedRow = 0;
@@ -42,6 +51,15 @@ public class SudokuBoardController implements Initializable {
         solved = false;
     }
     
+    
+    public void saveGame(ActionEvent event) throws IOException, SQLException {
+        try { 
+            dao = new SudokuDao("jdbc:h2:./sudoku");
+        } catch (SQLException ex) {
+            Logger.getLogger(LoadScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dao.create(gameboard);
+    }
     
     /**
      * Number of digits to remove from the gameboard
