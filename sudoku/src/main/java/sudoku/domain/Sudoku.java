@@ -5,6 +5,7 @@
  */
 package sudoku.domain;
 
+import java.time.Instant;
 import java.util.Arrays;
 
 /**
@@ -12,9 +13,12 @@ import java.util.Arrays;
  * @author sebserge
  */
 public final class Sudoku {
+    int id;
+    Instant time;
     int[][] solvedSudoku;
     int[][] playableSudoku;
     int[][] initialSudoku;
+//    int[][] testSudoku = new int[10][10];
     int removeNumbers;
     SudokuGenerator generator;
     public Sudoku(int difficulty) {
@@ -24,6 +28,14 @@ public final class Sudoku {
         initialSudoku = new int[9 + 1][9 + 1];
         initialSudoku = deepCopy(solvedSudoku);
         removeDigitsFromInitialSudoku(difficulty);
+    }
+    
+    public Sudoku(int id, String initial, String playable, String solved, Instant time) {
+        generator = new SudokuGenerator();
+        this.setInitialSudoku(initial);
+        this.setPlayableSudoku(playable);
+        this.setSolvedSudoku(solved);
+        this.time = time;
     }
     
     public Sudoku() {
@@ -40,6 +52,38 @@ public final class Sudoku {
     
     public int[][] getInitialSudoku() {
         return initialSudoku;
+    }
+    
+    public void setSolvedSudoku(String solved) {
+//        String test = "[[8, 3, 2, 1, 5, 4, 6, 9, 7, 0], [6, 9, 4, 7, 2, 3, 5, 1, 8, 0], [7, 5, 1, 6, 8, 9, 3, 4, 2, 0], [1, 2, 5, 3, 4, 8, 7, 6, 9, 0], [4, 6, 9, 2, 7, 1, 8, 3, 5, 0], [3, 7, 8, 5, 9, 6, 4, 2, 1, 0], [2, 1, 6, 8, 3, 5, 9, 7, 4, 0], [5, 4, 3, 9, 1, 7, 2, 8, 6, 0], [9, 8, 7, 4, 6, 2, 1, 5, 3, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]";
+        this.solvedSudoku = stringTo2DInt(solved);
+//        System.out.println(Arrays.deepToString(testSudoku));
+    }
+    
+    public void setInitialSudoku(String initial) {
+        this.initialSudoku = stringTo2DInt(initial);
+    }
+    
+    public void setPlayableSudoku(String playable) {
+        this.playableSudoku = stringTo2DInt(playable);
+    }
+    
+    
+    /**
+     * Convert a Arrays.deepToString() sudoku string into a 2D int array. Used to set the boards from the database
+     * @param sudoku deepToString string of an int[10][10] array
+     * @return int[][] array converted from the string
+     */
+    public int[][] stringTo2DInt(String sudoku) {
+        String[] strings = sudoku.replace("[", "").split("], ");
+        int[][] sudokuReturn = new int[10][10];
+        for (int i = 0; i < strings.length; i++) {
+            String[] row = strings[i].replace("]", "").split(", ");
+            for (int j = 0; j < row.length; j++) {
+                sudokuReturn[i][j] = Integer.parseInt(row[j]);
+            }
+        }
+        return sudokuReturn;
     }
         
     /**
