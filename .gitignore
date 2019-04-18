@@ -7,3 +7,5 @@
 /sudoku/nbproject/
 /documentation/kuvat/yuml.txt
 nbactions.xml
+nb-configuration.xml
+sudoku/sudoku.mv.db
