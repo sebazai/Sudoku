@@ -9,5 +9,8 @@
       <Canvas fx:id="canvas" height="450.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#canvasMouseClicked" width="450.0" />
       <Button fx:id="solve" layoutX="568.0" layoutY="46.0" mnemonicParsing="false" onAction="#solveSudokuPressed" text="Solve sudoku" />
       <Button fx:id="save" layoutX="569.0" layoutY="91.0" mnemonicParsing="false" onAction="#saveGame" text="Save and quit" />
+      <Button fx:id="hint" layoutX="569.0" layoutY="237.0" mnemonicParsing="false" onAction="#giveAHint" text="Hint" />
+      <Button fx:id="quit" layoutX="569.0" layoutY="410.0" mnemonicParsing="false" onAction="#quitGameWithoutSaving" text="Return to menu" />
+      <Button fx:id="emptyboard" layoutX="568.0" layoutY="276.0" mnemonicParsing="false" onAction="#emptyPlayableSudokuMatrix" text="Empty board" />
    </children>
 </Pane>
