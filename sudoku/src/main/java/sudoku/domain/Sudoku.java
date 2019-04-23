@@ -69,14 +69,26 @@ public final class Sudoku implements Comparable<Sudoku> {
         return this.id;
     }
     
+    /**
+     * Sets the solvedSudoku array from database string
+     * @param solved String from database
+     */
     public void setSolvedSudoku(String solved) {
         this.solvedSudoku = stringTo2DInt(solved);
     }
     
+    /**
+     * Sets the initialSudoku array from database string
+     * @param initial String from database
+     */
     public void setInitialSudoku(String initial) {
         this.initialSudoku = stringTo2DInt(initial);
     }
     
+    /**
+     * Sets the playableSudoku array from database string
+     * @param playable String from database
+     */
     public void setPlayableSudoku(String playable) {
         this.playableSudoku = stringTo2DInt(playable);
     }
@@ -113,6 +125,27 @@ public final class Sudoku implements Comparable<Sudoku> {
         return result;
     }
     
+    /**
+     * Shows one correct number from the solvedSudoku matrix on the gameboard where square is empty.
+     */
+    public void giveAHintToThePlayer() {
+        int getRandomCell = (int) Math.floor((Math.random() * 81 + 1));
+        int i = (getRandomCell / 9);
+        int j = getRandomCell % 9;
+        if (playableSudoku[i][j] == 0 && initialSudoku[i][j] == 0) {
+            playableSudoku[i][j] = solvedSudoku[i][j];
+        } else {
+            giveAHintToThePlayer();
+        }
+    }
+    
+    public void emptyPlayableSudokuMatrix() {
+        for (int i = 0; i < playableSudoku.length; i++) {
+            for (int j = 0; j < playableSudoku[0].length; j++) {
+                playableSudoku[i][j] = 0;
+            }
+        }
+    }
     
     /**
      * Removes x number of digits from the solved sudoku array and adds them to initialSudoku array
@@ -135,6 +168,12 @@ public final class Sudoku implements Comparable<Sudoku> {
         } 
     }
     
+    /**
+     * Modifies the sudoku board from an input
+     * @param val   the number to be placed
+     * @param row   row of playableSudoku Matrix
+     * @param col   column of playableSudoku Matrix
+     */
     public void modifyPlayableSudoku(int val, int row, int col) {
         if (initialSudoku[row][col] == 0) {
             if (val >= 0 && val <= 9) {
