@@ -28,17 +28,16 @@ public class StartScreenController implements Initializable {
     @FXML Button easy;
     @FXML Button load;
     FXMLLoader loader;
-    DatabaseSudokuDao dao;
+    SudokuDao dao;
+
+    StartScreenController(SudokuDao dao) {
+        this.dao = dao;
+    }
     
     @Override
     public void initialize(URL argument0, ResourceBundle argument1) {
         loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/sudokuboard.fxml"));
-        try {
-            dao = new DatabaseSudokuDao("jdbc:h2:./sudoku");
-        } catch (SQLException ex) {
-            Logger.getLogger(StartScreenController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }    
     
     /**

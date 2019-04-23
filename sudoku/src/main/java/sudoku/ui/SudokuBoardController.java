@@ -26,6 +26,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import sudoku.dao.DatabaseSudokuDao;
+import sudoku.dao.SudokuDao;
 import sudoku.domain.Sudoku;
 import sudoku.domain.SudokuSolver;
 
@@ -43,10 +44,10 @@ public class SudokuBoardController implements Initializable {
     int selectedCol;
     int difficulty;
     boolean solved;
-    DatabaseSudokuDao dao;
+    SudokuDao dao;
     FXMLLoader loader;
 
-    SudokuBoardController(Sudoku sudoku, DatabaseSudokuDao dao) {
+    SudokuBoardController(Sudoku sudoku, SudokuDao dao) {
         this.gameboard = sudoku;
         this.dao = dao;
     }
@@ -81,7 +82,7 @@ public class SudokuBoardController implements Initializable {
      */
     public void quitGameWithoutSaving(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        loader.setController(new StartScreenController());
+        loader.setController(new StartScreenController(dao));
         Pane root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);

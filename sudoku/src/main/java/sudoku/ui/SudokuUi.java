@@ -10,12 +10,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import sudoku.dao.DatabaseSudokuDao;
 
 /**
  *
  * @author sebserge
  */
 public class SudokuUi extends Application {
+    
+    private DatabaseSudokuDao dao;
+    @Override
+    public void init() throws Exception {
+        dao = new DatabaseSudokuDao("jdbc:h2:./sudoku");
+    }
     
     /**
      * Loads the startscreen.fxml UI and sets the start scene.
@@ -25,7 +32,7 @@ public class SudokuUi extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loadStart = new FXMLLoader(getClass().getResource("/fxml/startscreen.fxml"));
-        loadStart.setController(new StartScreenController());
+        loadStart.setController(new StartScreenController(dao));
         Pane root = loadStart.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);

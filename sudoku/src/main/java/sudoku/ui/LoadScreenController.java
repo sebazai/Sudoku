@@ -25,7 +25,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import sudoku.dao.DatabaseSudokuDao;
+import sudoku.dao.SudokuDao;
 import sudoku.domain.Sudoku;
 
 /**
@@ -40,9 +40,9 @@ public class LoadScreenController implements Initializable {
     @FXML GridPane grid;
     @FXML Button menu;
     List<Sudoku> games;
-    DatabaseSudokuDao dao;
+    SudokuDao dao;
 
-    LoadScreenController(DatabaseSudokuDao dao) {
+    LoadScreenController(SudokuDao dao) {
         this.dao = dao;
     }
 
@@ -79,7 +79,7 @@ public class LoadScreenController implements Initializable {
      */
     public void returnToMenu(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        menuLoader.setController(new StartScreenController());
+        menuLoader.setController(new StartScreenController(dao));
         Pane root = menuLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
