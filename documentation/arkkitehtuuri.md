@@ -27,9 +27,15 @@ Sudoku näkymässä voi navigoida eri ruutuihin hiirellä tai nuolinäppäimiä 
 
 ## Sovelluslogiikka
 
-Sovelluksen logiikka muodostuu luokista [Sudoku](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/domain/Sudoku.java), [SudokuSolver](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/domain/SudokuSolver.java) ja [SudokuGenerator](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/domain/SudokuGenerator.java). Alla luokkakaavio sovelluslogiikasta ja sovelluksen käyttöliittymäluokista, jotka muodostuvat luokista [SudokuUi](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/ui/SudokuUi.java), [StartScreenController](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/ui/StartScreenController.java) ja [SudokuBoardController](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/ui/SudokuBoardController.java):
+Luokkakaavio ja/sekä pakkauskaavio on kuvattuna alla olevissa kuvissa.
+
+Sovelluksen logiikka muodostuu luokista [Sudoku](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/domain/Sudoku.java), [SudokuSolver](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/domain/SudokuSolver.java) ja [SudokuGenerator](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/domain/SudokuGenerator.java). Alla luokkakaavio sovelluslogiikasta, DAO-luokasta ja sovelluksen käyttöliittymäluokista, jotka muodostuvat luokista [SudokuUi](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/ui/SudokuUi.java), [StartScreenController](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/ui/StartScreenController.java), [SudokuBoardController](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/ui/SudokuBoardController.java), [LoadScreenContoller](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/ui/LoadScreenController.java):
 
 <img src="https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/kuvat/luokkakaavio.png">
+
+Sovelluksen pakkaus- sekä luokkakaavio kuvattuna alla. Sovelluksen käyttöliittymä SudokuUi luo tietokantayhteyden ja vie DAO-objektia eteenpäin muille näkymille, jotka hakevat tarvittavan datan rajapinnan kautta.
+
+<img sec="https://github.com/sebazai/ot-harhoitustyo/blob/master/documentation/kuvat/pakkausluokka.png">
 
 ## Päätoiminnallisuudet
 
@@ -46,4 +52,9 @@ Sekvenssikaaviossa on pyritty aukaisemaan mahdollisimman tarkasti kuinka sudoku 
 
 ## Tietojen pysyväistallennus
 
-Lisätään myöhemmin...
+Pakkauksen sudoku.dao luokka DatabaseSudokuDao huolehtii tietojen tallettamisesta ja hakemisesta tietokannasta.
+
+Luokat noudattavat Data Access Object -suunnittelumallia ja ne on tarvittaessa mahdollista korvata esim. tallettamalla muualle kuin tietokantaan, kuten tiedostoon. Luokka on eristetty rajapinnan SudokuDao taakse ja sovelluslogiikka ei ole suoraan yhteydessä tietokantaan.
+
+
+
