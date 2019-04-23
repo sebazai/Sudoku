@@ -8,5 +8,6 @@
 	<suppress files="sudoku.ui.SudokuUi.java" checks="[a-zA-Z0-9]*"/>
     	<suppress files="sudoku.ui.SudokuBoardController.java" checks="[a-zA-Z0-9]*"/>
     	<suppress files="sudoku.ui.StartScreenController.java" checks="[a-zA-Z0-9]*"/>
+	<suppress files="sudoku.ui.LoadScreenController.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>
 

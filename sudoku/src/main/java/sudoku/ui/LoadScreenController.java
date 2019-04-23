@@ -109,7 +109,7 @@ public class LoadScreenController implements Initializable {
             try {
                 String game = ((Button) e.getSource()).getText();
                 String[] split = game.split(" ");
-                Sudoku sudoku = games.get(Integer.parseInt(split[1])-1);
+                Sudoku sudoku = games.get(Integer.parseInt(split[1]) - 1);
                 
                 System.out.println("ID: " + sudoku.getId());
                 dao.delete(sudoku.getId());
