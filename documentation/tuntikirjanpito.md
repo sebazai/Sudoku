@@ -30,4 +30,5 @@
 |23.4.	|2	|Pelin lataaminen tietokannasta näkymä ja logiikka
 |	|1	|Dokumentointia, siistimistä ja rekaterointia
 |	|2	|DAO testien tekeminen ja javadocin täydennystä
-|yht.	|36	|
+|	|2	|Koodin refaktorointia, arkkitehtuuriin pakkauskaavio ja Javadoc täydennys
+|yht.	|38	|
