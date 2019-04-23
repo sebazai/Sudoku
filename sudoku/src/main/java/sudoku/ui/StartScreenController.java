@@ -107,14 +107,8 @@ public class StartScreenController implements Initializable {
         if (list.isEmpty()) {
             controller.setInfoText("No saved games");
         } else {
-            Stage window2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader load = new FXMLLoader();
-            load.setLocation(getClass().getResource("/fxml/sudokuboard.fxml"));
-            load.setController(new SudokuBoardController(list.get(0)));
-            Pane pane2 = load.load();
-            Scene loadScene2 = new Scene(pane2);
-            window.setScene(loadScene2);
-            window.show();
+            controller.setLoadableGamesList(list);
+            controller.setLoadableGamesButtons();
         }
     }
     

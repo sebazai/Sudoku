@@ -59,6 +59,12 @@ public class SudokuBoardController implements Initializable {
             Logger.getLogger(LoadScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
         dao.create(gameboard);
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Sudoku saved successfully");
+        alert.setHeaderText("Sudoku saved successfully");
+        alert.setContentText("Press OK or close this windows to quit game.");
+        alert.showAndWait();
+        Runtime.getRuntime().exit(0);
     }
     
     /**
