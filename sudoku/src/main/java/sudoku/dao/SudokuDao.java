@@ -11,8 +11,13 @@ package sudoku.dao;
  */
 
 import java.sql.*;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import sudoku.domain.Sudoku;
 
@@ -45,8 +50,7 @@ public class SudokuDao {
         stmt.setString(1, Arrays.deepToString(sudoku.getInitialSudoku()));
         stmt.setString(2, Arrays.deepToString(sudoku.getPlayableSudoku()));
         stmt.setString(3, Arrays.deepToString(sudoku.getSolvedSudoku()));
-        stmt.setTimestamp(4, new java.sql.Timestamp(new java.util.Date().getTime()));
-
+        stmt.setTimestamp(4, Timestamp.from(ZonedDateTime.now(ZoneOffset.systemDefault()).toInstant()));
         stmt.executeUpdate();
         stmt.close();
         conn.close();
@@ -67,7 +71,7 @@ public class SudokuDao {
     public List<Sudoku> list() throws SQLException {
         List<Sudoku> loadedSudokus = new ArrayList<>();
         Connection conn = DriverManager.getConnection(databasePath, "sa", "");
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Sudoku LIMIT 5");
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Sudoku LIMIT 10");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
@@ -83,7 +87,7 @@ public class SudokuDao {
 
         stmt.close();
         conn.close();
-
+        Collections.sort(loadedSudokus);
         return loadedSudokus;
     }
 
