@@ -21,9 +21,9 @@ import sudoku.domain.Sudoku;
  *
  * @author sebserge
  */
-public class SudokuDaoTest {
+public class DatabaseSudokuDaoTest {
     
-    SudokuDao dao;
+    DatabaseSudokuDao dao;
     Connection conn;
     String solvedSudoku;
     String initialSudoku;
@@ -32,7 +32,7 @@ public class SudokuDaoTest {
     @Before
     public void setUp() throws SQLException {
         String dbPath = "jdbc:h2:./sudokutestdatabase";
-        dao = new SudokuDao(dbPath);
+        dao = new DatabaseSudokuDao(dbPath);
         conn = DriverManager.getConnection(dbPath, "sa", "");
         conn.prepareStatement("DROP TABLE Sudoku IF EXISTS;").executeUpdate();
         conn.prepareStatement(
