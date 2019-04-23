@@ -9,7 +9,10 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
@@ -18,8 +21,10 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import sudoku.dao.SudokuDao;
 import sudoku.domain.Sudoku;
 import sudoku.domain.SudokuSolver;
@@ -28,6 +33,9 @@ public class SudokuBoardController implements Initializable {
     
     @FXML Button solve;
     @FXML Button save;
+    @FXML Button quit;
+    @FXML Button hint;
+    @FXML Button emptyboard;
     @FXML Canvas canvas;
     
     Sudoku gameboard;
@@ -36,6 +44,7 @@ public class SudokuBoardController implements Initializable {
     int difficulty;
     boolean solved;
     SudokuDao dao;
+    FXMLLoader loader;
 
     SudokuBoardController(Sudoku get) {
         gameboard = get;
@@ -43,21 +52,60 @@ public class SudokuBoardController implements Initializable {
     
     @Override
     public void initialize(URL argument0, ResourceBundle argument1) {
-//        gameboard = new Sudoku(difficulty);
+        loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/startscreen.fxml"));
         GraphicsContext context = canvas.getGraphicsContext2D();
         drawOnCanvas(context);
         selectedRow = 0;
         selectedCol = 0;
         solved = false;
-    }
-    
-    
-    public void saveGame(ActionEvent event) throws IOException, SQLException {
         try { 
             dao = new SudokuDao("jdbc:h2:./sudoku");
         } catch (SQLException ex) {
             Logger.getLogger(LoadScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    /**
+     * Hint button gives a random number to help the player.
+     * @param event 
+     */
+    public void giveAHint(ActionEvent event) {
+        gameboard.giveAHintToThePlayer();
+        this.drawOnCanvas(canvas.getGraphicsContext2D());
+    }
+    
+    /**
+     * Return to menu button, changes the scene to main menu.
+     * @param event
+     * @throws IOException 
+     */
+    public void quitGameWithoutSaving(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        loader.setController(new StartScreenController());
+        Pane root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Sudoku");
+        stage.show();
+    }
+    
+    /**
+     * Empties all the numbers that the user has given on the board.
+     * @param event 
+     */
+    public void emptyPlayableSudokuMatrix(ActionEvent event) {
+        gameboard.emptyPlayableSudokuMatrix();
+        this.drawOnCanvas(canvas.getGraphicsContext2D());
+    }
+    
+    /**
+     * Save the current sudoku game
+     * @param event Save and quit button pressed event
+     * @throws IOException
+     * @throws SQLException 
+     */
+    public void saveGame(ActionEvent event) throws IOException, SQLException {
         dao.create(gameboard);
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Sudoku saved successfully");

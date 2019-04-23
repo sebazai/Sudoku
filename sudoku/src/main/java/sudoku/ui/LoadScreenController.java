@@ -36,15 +36,19 @@ import sudoku.domain.Sudoku;
 public class LoadScreenController implements Initializable {
 
     FXMLLoader loader;
+    FXMLLoader menuLoader;
     @FXML Text info;
     @FXML GridPane grid;
+    @FXML Button menu;
     List<Sudoku> games;
     SudokuDao dao;
 
     @Override
     public void initialize(URL argument0, ResourceBundle argument1) {
         loader = new FXMLLoader();
+        menuLoader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/sudokuboard.fxml"));
+        menuLoader.setLocation(getClass().getResource("/fxml/startscreen.fxml"));
         try { 
             dao = new SudokuDao("jdbc:h2:./sudoku");
         } catch (SQLException ex) {
@@ -52,14 +56,42 @@ public class LoadScreenController implements Initializable {
         }
     }
     
+    
+    /**
+     * Sets the label on the scene if there is no saved games in the database
+     * @param text String
+     */
     public void setInfoText(String text) {
         info.setText(text);
     }
     
+    /**
+     * Sets the controllers list of games equal to the given in the parameter.
+     * @param games List of Sudoku objects
+     */
     public void setLoadableGamesList(List<Sudoku> games) {
         this.games = games;
     }
     
+    
+    /**
+     * Return to menu button, returns to the main menu.
+     * @param event
+     * @throws IOException 
+     */
+    public void returnToMenu(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        menuLoader.setController(new StartScreenController());
+        Pane root = menuLoader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Sudoku");
+        stage.show();
+    }
+    
+    /**
+     * Adds a button to the load game screen for each game in the games list. Max up to 10 buttons
+     */
     public void setLoadableGamesButtons() {
         for (int i = 0; i < games.size(); i++) {
             Button button = new Button("Game " + (1 + i));
@@ -69,6 +101,9 @@ public class LoadScreenController implements Initializable {
         }
     }
     
+    /**
+     * EventHandler for all the buttons to load the chosen game.
+     */
     EventHandler<ActionEvent> loadGame = new EventHandler<ActionEvent>() {
         public void handle(ActionEvent e) {
             try {
