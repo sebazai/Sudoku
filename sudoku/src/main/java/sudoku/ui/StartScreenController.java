@@ -3,7 +3,6 @@ package sudoku.ui;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -13,11 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import sudoku.dao.DatabaseSudokuDao;
 import sudoku.dao.SudokuDao;
 import sudoku.domain.Sudoku;
 
@@ -29,16 +28,16 @@ public class StartScreenController implements Initializable {
     @FXML Button easy;
     @FXML Button load;
     FXMLLoader loader;
-    SudokuDao dao;
+    DatabaseSudokuDao dao;
     
     @Override
     public void initialize(URL argument0, ResourceBundle argument1) {
         loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/sudokuboard.fxml"));
-        try { 
-            dao = new SudokuDao("jdbc:h2:./sudoku");
+        try {
+            dao = new DatabaseSudokuDao("jdbc:h2:./sudoku");
         } catch (SQLException ex) {
-            Logger.getLogger(LoadScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StartScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
     
@@ -80,7 +79,7 @@ public class StartScreenController implements Initializable {
      * @throws IOException 
      */
     public void startGame(Stage window, int difficulty) throws IOException {
-        loader.setController(new SudokuBoardController(new Sudoku(difficulty)));
+        loader.setController(new SudokuBoardController(new Sudoku(difficulty), dao));
         SudokuBoardController controller = loader.getController();
         controller.setDifficulty(difficulty);
         Pane pane = loader.load();
@@ -91,10 +90,16 @@ public class StartScreenController implements Initializable {
         window.show();  
     }
     
+    /**
+     * Sets the objects of the loadscreen.fxml
+     * @param event Load game button pressed event
+     * @throws IOException
+     * @throws SQLException 
+     */
     public void loadGame(ActionEvent event) throws IOException, SQLException {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         loader.setLocation(getClass().getResource("/fxml/loadscreen.fxml"));
-        loader.setController(new LoadScreenController());
+        loader.setController(new LoadScreenController(dao));
         LoadScreenController controller = loader.getController();
         List<Sudoku> list = dao.list();
         

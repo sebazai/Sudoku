@@ -21,12 +21,11 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import sudoku.dao.SudokuDao;
+import sudoku.dao.DatabaseSudokuDao;
 import sudoku.domain.Sudoku;
 
 /**
@@ -41,7 +40,11 @@ public class LoadScreenController implements Initializable {
     @FXML GridPane grid;
     @FXML Button menu;
     List<Sudoku> games;
-    SudokuDao dao;
+    DatabaseSudokuDao dao;
+
+    LoadScreenController(DatabaseSudokuDao dao) {
+        this.dao = dao;
+    }
 
     @Override
     public void initialize(URL argument0, ResourceBundle argument1) {
@@ -49,11 +52,6 @@ public class LoadScreenController implements Initializable {
         menuLoader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/sudokuboard.fxml"));
         menuLoader.setLocation(getClass().getResource("/fxml/startscreen.fxml"));
-        try { 
-            dao = new SudokuDao("jdbc:h2:./sudoku");
-        } catch (SQLException ex) {
-            Logger.getLogger(LoadScreenController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     
@@ -115,7 +113,7 @@ public class LoadScreenController implements Initializable {
                 dao.delete(sudoku.getId());
                 
                 Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                loader.setController(new SudokuBoardController(sudoku));
+                loader.setController(new SudokuBoardController(sudoku, dao));
                 Pane pane = null;
                 try {
                     pane = loader.load();
