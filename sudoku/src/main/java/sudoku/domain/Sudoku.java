@@ -12,15 +12,21 @@ import java.util.Arrays;
  *
  * @author sebserge
  */
-public final class Sudoku {
+public final class Sudoku implements Comparable<Sudoku> {
+        
     int id;
     Instant time;
     int[][] solvedSudoku;
     int[][] playableSudoku;
     int[][] initialSudoku;
-//    int[][] testSudoku = new int[10][10];
     int removeNumbers;
     SudokuGenerator generator;
+    
+    @Override
+    public int compareTo(Sudoku o) {
+        return o.time.compareTo(this.time);
+    }
+    
     public Sudoku(int difficulty) {
         generator = new SudokuGenerator();
         solvedSudoku = generator.generateSudoku();
@@ -31,6 +37,7 @@ public final class Sudoku {
     }
     
     public Sudoku(int id, String initial, String playable, String solved, Instant time) {
+        this.id = id;
         generator = new SudokuGenerator();
         this.setInitialSudoku(initial);
         this.setPlayableSudoku(playable);
@@ -52,6 +59,14 @@ public final class Sudoku {
     
     public int[][] getInitialSudoku() {
         return initialSudoku;
+    }
+    
+    public Instant getSavedTime() {
+        return this.time;
+    }
+    
+    public int getId() {
+        return this.id;
     }
     
     public void setSolvedSudoku(String solved) {
