@@ -70,9 +70,7 @@ public final class Sudoku implements Comparable<Sudoku> {
     }
     
     public void setSolvedSudoku(String solved) {
-//        String test = "[[8, 3, 2, 1, 5, 4, 6, 9, 7, 0], [6, 9, 4, 7, 2, 3, 5, 1, 8, 0], [7, 5, 1, 6, 8, 9, 3, 4, 2, 0], [1, 2, 5, 3, 4, 8, 7, 6, 9, 0], [4, 6, 9, 2, 7, 1, 8, 3, 5, 0], [3, 7, 8, 5, 9, 6, 4, 2, 1, 0], [2, 1, 6, 8, 3, 5, 9, 7, 4, 0], [5, 4, 3, 9, 1, 7, 2, 8, 6, 0], [9, 8, 7, 4, 6, 2, 1, 5, 3, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]";
         this.solvedSudoku = stringTo2DInt(solved);
-//        System.out.println(Arrays.deepToString(testSudoku));
     }
     
     public void setInitialSudoku(String initial) {

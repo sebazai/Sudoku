@@ -5,6 +5,8 @@
  */
 package sudoku.domain;
 
+import java.time.Instant;
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -66,6 +68,56 @@ public class SudokuTest {
             }
         }
         assertTrue(works);
+    }
+    
+    @Test
+    public void stringTo2DIntArray() {
+        boolean matchesOriginal = true;
+        String test = "[[8, 3, 2, 1, 5, 4, 6, 9, 7, 0], [6, 9, 4, 7, 2, 3, 5, 1, 8, 0], [7, 5, 1, 6, 8, 9, 3, 4, 2, 0], [1, 2, 5, 3, 4, 8, 7, 6, 9, 0], [4, 6, 9, 2, 7, 1, 8, 3, 5, 0], [3, 7, 8, 5, 9, 6, 4, 2, 1, 0], [2, 1, 6, 8, 3, 5, 9, 7, 4, 0], [5, 4, 3, 9, 1, 7, 2, 8, 6, 0], [9, 8, 7, 4, 6, 2, 1, 5, 3, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]";
+        int[][] sudokuTable = new int[][]{
+            {8, 3, 2, 1, 5, 4, 6, 9, 7, 0},
+            {6, 9, 4, 7, 2, 3, 5, 1, 8, 0},
+            {7, 5, 1, 6, 8, 9, 3, 4, 2, 0},
+            {1, 2, 5, 3, 4, 8, 7, 6, 9, 0},
+            {4, 6, 9, 2, 7, 1, 8, 3, 5, 0},
+            {3, 7, 8, 5, 9, 6, 4, 2, 1, 0},
+            {2, 1, 6, 8, 3, 5, 9, 7, 4, 0},
+            {5, 4, 3, 9, 1, 7, 2, 8, 6, 0},
+            {9, 8, 7, 4, 6, 2, 1, 5, 3, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        };
+        int[][] copiedToArray = sudoku.stringTo2DInt(test);
+        for (int i = 0; i < sudokuTable.length; i++) {
+            for (int j = 0; j < sudokuTable[0].length; j++) {
+                if (sudokuTable[i][j] != copiedToArray[i][j]) {
+                    matchesOriginal = false;
+                }
+            }
+        }
+        assertTrue(matchesOriginal);
+    }
+    
+    @Test
+    public void compareToWithSameTime() {
+        Instant now = Instant.now();
+        sudoku.time = now;
+        Sudoku testTime = new Sudoku();
+        testTime.time = now;
+        assertEquals(0, sudoku.compareTo(testTime));
+    }
+    
+    @Test
+    public void compareToReturnsPositive() {
+        Instant now = Instant.now();
+        sudoku.time = now;
+        Sudoku testTime = new Sudoku();
+        Date date = new Date();
+        testTime.time = date.toInstant();
+        boolean isPositive = false;
+        if (sudoku.compareTo(testTime) > 0) {
+            isPositive = true;
+        }
+        assertTrue(isPositive);
     }
     
     @Test
