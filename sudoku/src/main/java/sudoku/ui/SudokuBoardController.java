@@ -71,6 +71,9 @@ public class SudokuBoardController implements Initializable {
      * @param event 
      */
     public void giveAHint(ActionEvent event) {
+        if (solved) {
+            return;
+        }
         gameboard.giveAHintToThePlayer();
         this.drawOnCanvas(canvas.getGraphicsContext2D());
     }
@@ -95,6 +98,9 @@ public class SudokuBoardController implements Initializable {
      * @param event 
      */
     public void emptyPlayableSudokuMatrix(ActionEvent event) {
+        if (solved) {
+            return;
+        }
         gameboard.emptyPlayableSudokuMatrix();
         this.drawOnCanvas(canvas.getGraphicsContext2D());
     }
@@ -106,6 +112,9 @@ public class SudokuBoardController implements Initializable {
      * @throws SQLException 
      */
     public void saveGame(ActionEvent event) throws IOException, SQLException {
+        if (solved) {
+            return;
+        }
         dao.create(gameboard);
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Sudoku saved successfully");
