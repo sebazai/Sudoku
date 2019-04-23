@@ -35,7 +35,7 @@ Sovelluksen logiikka muodostuu luokista [Sudoku](https://github.com/sebazai/ot-h
 
 Sovelluksen pakkaus- sekä luokkakaavio kuvattuna alla. Sovelluksen käyttöliittymä SudokuUi luo tietokantayhteyden ja vie DAO-objektia eteenpäin muille näkymille, jotka hakevat tarvittavan datan rajapinnan kautta.
 
-<img sec="https://github.com/sebazai/ot-harhoitustyo/blob/master/documentation/kuvat/pakkausluokka.png">
+<img src="https://github.com/sebazai/ot-harhoitustyo/blob/master/documentation/kuvat/pakkausluokka.png">
 
 ## Päätoiminnallisuudet
 
