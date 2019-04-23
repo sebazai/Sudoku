@@ -23,4 +23,8 @@
 |12.4.	|0,5	|Luokkakaavio päivitystä ja testien tekoa|
 |15.4.	|1	|JavaDoc ja koodin siistimistä|
 |16.4.	|0,5	|Releasen teko ja viikon 5 asioiden läpikäynti|
-|yht.	|26	|
+|18.4.	|1	|Tietokannan käyttöönotto
+|	|1	|Tietokantatoiminnallisuuksien teko
+|	|1	|"Load game" näkymän tekemistä ja toiminnallisuuksien lisäys
+|	|2	|JavaFX saaminen kuntoon fuksiläppärillä
+|yht.	|31	|
