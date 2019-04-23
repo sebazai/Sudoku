@@ -65,7 +65,7 @@ public class SudokuBoardController implements Initializable {
     
     /**
      * Hint button gives a random number to help the player.
-     * @param event 
+     * @param event Hint button pressed event
      */
     public void giveAHint(ActionEvent event) {
         if (solved) {
@@ -77,8 +77,8 @@ public class SudokuBoardController implements Initializable {
     
     /**
      * Return to menu button, changes the scene to main menu.
-     * @param event
-     * @throws IOException 
+     * @param event Return to main menu button pressed
+     * @throws IOException  IOException
      */
     public void quitGameWithoutSaving(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -92,7 +92,7 @@ public class SudokuBoardController implements Initializable {
     
     /**
      * Empties all the numbers that the user has given on the board.
-     * @param event 
+     * @param event Empty sudoku matrix button pressed
      */
     public void emptyPlayableSudokuMatrix(ActionEvent event) {
         if (solved) {
@@ -105,8 +105,8 @@ public class SudokuBoardController implements Initializable {
     /**
      * Save the current sudoku game
      * @param event Save and quit button pressed event
-     * @throws IOException
-     * @throws SQLException 
+     * @throws IOException  IOException
+     * @throws SQLException SQL error
      */
     public void saveGame(ActionEvent event) throws IOException, SQLException {
         if (solved) {
@@ -164,7 +164,7 @@ public class SudokuBoardController implements Initializable {
     /**
      * Event handler for solve sudoku button. Solves the sudoku.
      * @param event Solve sudoku button
-     * @throws IOException 
+     * @throws IOException IO exception
      */
     public void solveSudokuPressed(ActionEvent event) throws IOException {
         if (solved) {

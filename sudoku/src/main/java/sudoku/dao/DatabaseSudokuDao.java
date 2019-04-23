@@ -39,7 +39,7 @@ public class DatabaseSudokuDao implements SudokuDao<Sudoku, Integer> {
     /**
      * Save a Sudoku object data into database
      * @param sudoku    Sudoku() object
-     * @throws SQLException 
+     * @throws SQLException SQL error
      */
     @Override
     public void create(Sudoku sudoku) throws SQLException {
@@ -61,7 +61,7 @@ public class DatabaseSudokuDao implements SudokuDao<Sudoku, Integer> {
     /**
      * Delete a database entry
      * @param key   database id
-     * @throws SQLException 
+     * @throws SQLException SQL error
      */
     @Override
     public void delete(Integer key) throws SQLException {
@@ -79,7 +79,7 @@ public class DatabaseSudokuDao implements SudokuDao<Sudoku, Integer> {
     /**
      * Returns the 10 first entries from the database
      * @return  List of the 10 first Sudoku objects
-     * @throws SQLException 
+     * @throws SQLException SQL error
      */
     @Override
     public List<Sudoku> list() throws SQLException {

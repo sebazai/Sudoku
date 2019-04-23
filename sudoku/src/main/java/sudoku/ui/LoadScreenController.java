@@ -74,8 +74,8 @@ public class LoadScreenController implements Initializable {
     
     /**
      * Return to menu button, returns to the main menu.
-     * @param event
-     * @throws IOException 
+     * @param event Return to menu button pressed
+     * @throws IOException  IOException
      */
     public void returnToMenu(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -50,7 +50,18 @@ mvn jacoco:report
 
 Kattavuusraportin voit aukaista selaimella, tiedosto sijaitsee _target/site/jacoco/index.html_
 
-#### Checkstyle
+### JavaDoc
+
+JavaDoc generoidaan komennolla
+
+```
+mvn javadoc:javadoc
+```
+
+JavaDocia voi tarkastella avaamalla selaimella tiedoston _target/site/apidocs/index.html_
+
+
+### Checkstyle
 
 Tiedoston [checkstyle.xml](https://github.com/sebazai/ot-harjoitustyo/blob/master/checkstyle.xml) määrittelemät tarkistukset suoritetaan kansiossa sudoku komennolla, komennon jälkeen tiedosto löytyy kansiosta _/sudoku/target/site/_ nimellä _checkstyle.html_
 

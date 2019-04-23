@@ -42,8 +42,8 @@ public class StartScreenController implements Initializable {
     
     /**
      *  Event handler for UI Hard button.
-     * @param event
-     * @throws IOException 
+     * @param event Hard button pressed
+     * @throws IOException  IOException
      */
     public void startHardGame(ActionEvent event) throws IOException {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -52,8 +52,8 @@ public class StartScreenController implements Initializable {
     
     /**
      * Event handler for UI Medium button
-     * @param event
-     * @throws IOException 
+     * @param event Medium button pressed
+     * @throws IOException IOException
      */
     public void startMediumGame(ActionEvent event) throws IOException {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -62,10 +62,9 @@ public class StartScreenController implements Initializable {
     
     /**
      * Event handler for UI Easy button
-     * @param event
-     * @throws IOException 
+     * @param event Easy button pressed
+     * @throws IOException IOException
      */
-    
     public void startEasyGame(ActionEvent event) throws IOException {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         startGame(window, 35);
@@ -75,7 +74,7 @@ public class StartScreenController implements Initializable {
      * Start the game with the chosen difficulty
      * @param window    The current stage where to change scene
      * @param difficulty    the number of digits to remove from the 9x9 sudoku
-     * @throws IOException 
+     * @throws IOException  Input/Output exception
      */
     public void startGame(Stage window, int difficulty) throws IOException {
         loader.setController(new SudokuBoardController(new Sudoku(difficulty), dao));
@@ -92,8 +91,8 @@ public class StartScreenController implements Initializable {
     /**
      * Sets the objects of the loadscreen.fxml
      * @param event Load game button pressed event
-     * @throws IOException
-     * @throws SQLException 
+     * @throws IOException  Input/Output exception
+     * @throws SQLException SQL error
      */
     public void loadGame(ActionEvent event) throws IOException, SQLException {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
