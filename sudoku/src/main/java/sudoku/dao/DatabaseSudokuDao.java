@@ -36,6 +36,11 @@ public class DatabaseSudokuDao implements SudokuDao<Sudoku, Integer> {
         conn.close();
     }
     
+    /**
+     * Save a Sudoku object data into database
+     * @param sudoku    Sudoku() object
+     * @throws SQLException 
+     */
     @Override
     public void create(Sudoku sudoku) throws SQLException {
         Connection conn = DriverManager.getConnection(databasePath, "sa", "");
@@ -53,6 +58,11 @@ public class DatabaseSudokuDao implements SudokuDao<Sudoku, Integer> {
         conn.close();
     }
 
+    /**
+     * Delete a database entry
+     * @param key   database id
+     * @throws SQLException 
+     */
     @Override
     public void delete(Integer key) throws SQLException {
         Connection conn = DriverManager.getConnection(databasePath, "sa", "");
@@ -66,6 +76,11 @@ public class DatabaseSudokuDao implements SudokuDao<Sudoku, Integer> {
         conn.close();
     }
 
+    /**
+     * Returns the 10 first entries from the database
+     * @return  List of the 10 first Sudoku objects
+     * @throws SQLException 
+     */
     @Override
     public List<Sudoku> list() throws SQLException {
         List<Sudoku> loadedSudokus = new ArrayList<>();

@@ -139,6 +139,9 @@ public final class Sudoku implements Comparable<Sudoku> {
         }
     }
     
+    /**
+     * Set all values to zero in playableSudoku matrix
+     */
     public void emptyPlayableSudokuMatrix() {
         for (int i = 0; i < playableSudoku.length; i++) {
             for (int j = 0; j < playableSudoku[0].length; j++) {
