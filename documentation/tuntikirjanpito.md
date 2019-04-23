@@ -27,4 +27,7 @@
 |	|1	|Tietokantatoiminnallisuuksien teko
 |	|1	|"Load game" näkymän tekemistä ja toiminnallisuuksien lisäys
 |	|2	|JavaFX saaminen kuntoon fuksiläppärillä
-|yht.	|31	|
+|23.4.	|2	|Pelin lataaminen tietokannasta näkymä ja logiikka
+|	|1	|Dokumentointia, siistimistä ja rekaterointia
+|	|2	|DAO testien tekeminen ja javadocin täydennystä
+|yht.	|36	|
