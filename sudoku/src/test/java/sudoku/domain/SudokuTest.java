@@ -101,7 +101,7 @@ public class SudokuTest {
     public void compareToWithSameTime() {
         Instant now = Instant.now();
         sudoku.time = now;
-        Sudoku testTime = new Sudoku();
+        Sudoku testTime = new Sudoku(35);
         testTime.time = now;
         assertEquals(0, sudoku.compareTo(testTime));
     }
@@ -110,7 +110,7 @@ public class SudokuTest {
     public void compareToReturnsPositive() {
         Instant now = Instant.now();
         sudoku.time = now;
-        Sudoku testTime = new Sudoku();
+        Sudoku testTime = new Sudoku(35);
         Date date = new Date();
         testTime.time = date.toInstant();
         boolean isPositive = false;
@@ -123,7 +123,7 @@ public class SudokuTest {
     @Test
     public void removeAmountOfDigitsFromTable() {
         int amountOfZeros = 0;
-        Sudoku testSudoku = new Sudoku();
+        Sudoku testSudoku = new Sudoku(0);
         testSudoku.initialSudoku = new int[][]{
             {1,2,3,4,5,6,7,8,9,0},
             {4,5,6,7,8,9,1,2,3,0},
@@ -149,7 +149,7 @@ public class SudokuTest {
     
     @Test
     public void modifyingPlayableSudokuChangesNumberGivenInMatrix() {
-        Sudoku testSudoku = new Sudoku();
+        Sudoku testSudoku = new Sudoku(0);
         boolean works;
         testSudoku.playableSudoku = new int[9][9];
         testSudoku.initialSudoku = new int[][]{
@@ -174,7 +174,7 @@ public class SudokuTest {
     
     @Test
     public void modifyingPlayableSudokuDoesNotChangeIfNumberAlreadyInInitialSudoku() {
-        Sudoku testSudoku = new Sudoku();
+        Sudoku testSudoku = new Sudoku(0);
         boolean works;
         testSudoku.playableSudoku = new int[9][9];
         testSudoku.initialSudoku = new int[][]{
@@ -199,7 +199,7 @@ public class SudokuTest {
     
     @Test
     public void modifyPlayableSudokuAcceptsOnlyValuesBetweenZeroAndNine() {
-        Sudoku testSudoku = new Sudoku();
+        Sudoku testSudoku = new Sudoku(0);
         boolean works;
         testSudoku.playableSudoku = new int[9][9];
         testSudoku.initialSudoku = new int[][]{
@@ -222,26 +222,67 @@ public class SudokuTest {
         }
         assertTrue(works);
     }
-//    @Test
-//    public void generateAndCheckSudoku() {
-//        boolean sudokuWorks = true;
-//        // Go through the whole sudoku 9*9 and see if the generated sudoku is valid.
-//        for(int i = 0; i < 9; i++) {
-//            for (int j = 0; j < 9; j++) {
-//                // Take the number in the generated sudoku
-//                int number = sudoku.solvedSudoku[i][j];
-//                sudoku.solvedSudoku[i][j] = 0;
-//                // Assign it to zero and check if it can be placed there
-//                if(!solver.checkIfSafe(sudoku.solvedSudoku, i, j, number)) {
-//                    sudokuWorks = false;
-//                }
-//                sudoku.solvedSudoku[i][j] = number;
-//            }
-//        }
-//        assertTrue(sudokuWorks);
-//    }
-//    @Test
-//    public void generateSudokuAndCheckIfZeros() {
-//        assertFalse(solver.sudokuContainsZeros(sudoku.solvedSudoku));
-//    }
+    
+    @Test
+    public void generateAndCheckSudoku() {
+        boolean sudokuWorks = true;
+        // Go through the whole sudoku 9*9 and see if the generated sudoku is valid.
+        for(int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                // Take the number in the generated sudoku
+                int number = sudoku.solvedSudoku[i][j];
+                sudoku.solvedSudoku[i][j] = 0;
+                // Assign it to zero and check if it can be placed there
+                if(!solver.checkIfSafe(sudoku.solvedSudoku, i, j, number)) {
+                    sudokuWorks = false;
+                }
+                sudoku.solvedSudoku[i][j] = number;
+            }
+        }
+        assertTrue(sudokuWorks);
+    }
+    
+    @Test
+    public void generateSudokuAndCheckIfZeros() {
+        assertFalse(solver.sudokuContainsZeros(sudoku.solvedSudoku));
+    }
+    
+    @Test
+    public void emptyPlayableSudokuMatrix() {
+        sudoku.playableSudoku = new int[][]{
+            {0,0,0,4,5,6,7,8,9},
+            {4,5,6,7,8,9,1,2,3},
+            {7,8,9,1,2,3,4,5,6},
+            {3,1,2,6,4,5,9,7,8},
+            {6,4,5,9,7,8,3,1,2},
+            {9,7,8,3,1,2,6,4,5},
+            {2,3,1,5,6,4,8,9,7},
+            {5,6,4,8,9,7,2,3,1},
+            {8,9,7,2,3,1,5,6,4},
+        };
+        sudoku.emptyPlayableSudokuMatrix();
+        boolean isEmpty = true;
+        for (int i = 0; i < sudoku.playableSudoku.length; i++) {
+            for (int j = 0; j < sudoku.playableSudoku[0].length; j++) {
+                if (sudoku.playableSudoku[i][j] != 0) {
+                    isEmpty = false;
+                }
+            }
+        }
+        assertTrue(isEmpty);
+    }
+    
+    @Test
+    public void giveAHintAddsOneNumberToThePlayableSudokuMatrix() {
+        sudoku.giveAHintToThePlayer();
+        int numbers = 0;
+        for (int i = 0; i < sudoku.playableSudoku.length; i++) {
+            for (int j = 0; j < sudoku.playableSudoku[i].length; j++) {
+                if (sudoku.playableSudoku[i][j] != 0) {
+                    numbers++;
+                }
+            }
+        }
+        assertEquals(1, numbers);
+    }
 }

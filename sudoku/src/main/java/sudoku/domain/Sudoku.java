@@ -44,10 +44,6 @@ public final class Sudoku implements Comparable<Sudoku> {
         this.setSolvedSudoku(solved);
         this.time = time;
     }
-    
-    public Sudoku() {
-        
-    }
 
     public int[][] getSolvedSudoku() {
         return solvedSudoku;

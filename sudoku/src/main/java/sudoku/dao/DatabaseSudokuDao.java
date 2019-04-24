@@ -37,7 +37,7 @@ public class DatabaseSudokuDao implements SudokuDao<Sudoku, Integer> {
     }
     
     /**
-     * Save a Sudoku object data into database
+     * Save a Sudoku object data into database, 2D arrays are saved using Arrays.deepToString() method
      * @param sudoku    Sudoku() object
      * @throws SQLException SQL error
      */

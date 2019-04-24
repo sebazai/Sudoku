@@ -13,8 +13,6 @@ import java.util.List;
  * @author sebserge
  */
 
-
-
 public interface SudokuDao<O, K> {
     void create(O object) throws SQLException;
     void delete(K key) throws SQLException;
