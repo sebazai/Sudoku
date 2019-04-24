@@ -31,4 +31,5 @@
 |	|1	|Dokumentointia, siistimistä ja rekaterointia
 |	|2	|DAO testien tekeminen ja javadocin täydennystä
 |	|2	|Koodin refaktorointia, arkkitehtuuriin pakkauskaavio ja Javadoc täydennys
-|yht.	|38	|
+|24.4.	|1	|Testien tekoa ja koodin siistimistä
+|yht.	|39	|
