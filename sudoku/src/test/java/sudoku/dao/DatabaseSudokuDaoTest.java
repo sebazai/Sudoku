@@ -61,7 +61,7 @@ public class DatabaseSudokuDaoTest {
     public void solvedSudokuIsEqualInDatabase() throws SQLException {
         boolean isEqual = true;
         Sudoku test = dao.list().get(0);
-        int[][] solvedSudokuArray = test.stringTo2DInt(solvedSudoku, false);
+        int[][] solvedSudokuArray = test.stringTo2DInt(solvedSudoku);
         for (int i = 0; i < solvedSudokuArray.length; i++) {
             for (int j = 0; j < solvedSudokuArray[0].length; j++) {
                 if (solvedSudokuArray[i][j] != test.getSolvedSudoku()[i][j]) {

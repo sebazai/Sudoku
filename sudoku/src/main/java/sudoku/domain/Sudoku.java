@@ -44,12 +44,12 @@ public final class Sudoku implements Comparable<Sudoku> {
     
     public Sudoku(int id, String initial, String playable, String solved, Instant time) {
         this.id = id;
-        numbersInMatrix = 0;
         generator = new SudokuGenerator();
         this.setInitialSudoku(initial);
         this.setPlayableSudoku(playable);
         this.setSolvedSudoku(solved);
         this.time = time;
+        numbersInMatrix = this.numbersInSudokuMatrix();
     }
     
     public SudokuGenerator getGenerator() {
@@ -81,7 +81,7 @@ public final class Sudoku implements Comparable<Sudoku> {
      * @param solved String from database
      */
     public void setSolvedSudoku(String solved) {
-        this.solvedSudoku = stringTo2DInt(solved, false);
+        this.solvedSudoku = stringTo2DInt(solved);
     }
     
     /**
@@ -89,7 +89,7 @@ public final class Sudoku implements Comparable<Sudoku> {
      * @param initial String from database
      */
     public void setInitialSudoku(String initial) {
-        this.initialSudoku = stringTo2DInt(initial, true);
+        this.initialSudoku = stringTo2DInt(initial);
     }
     
     /**
@@ -97,30 +97,38 @@ public final class Sudoku implements Comparable<Sudoku> {
      * @param playable String from database
      */
     public void setPlayableSudoku(String playable) {
-        this.playableSudoku = stringTo2DInt(playable, true);
+        this.playableSudoku = stringTo2DInt(playable);
     }
     
     
     /**
      * Convert a Arrays.deepToString() sudoku string into a 2D int array. Used to set the boards from the database
      * @param sudoku deepToString string of an int[10][10] array
-     * @param countNumbersInMatrix  counts the numbers in the matrix
      * @return int[][] array converted from the string
      */
-    public int[][] stringTo2DInt(String sudoku, boolean countNumbersInMatrix) {
+    public int[][] stringTo2DInt(String sudoku) {
         String[] strings = sudoku.replace("[", "").split("], ");
         int[][] sudokuReturn = new int[10][10];
         for (int i = 0; i < strings.length; i++) {
             String[] row = strings[i].replace("]", "").split(", ");
             for (int j = 0; j < row.length; j++) {
-                int theNumberToAdd= Integer.parseInt(row[j]);
-                if (countNumbersInMatrix && theNumberToAdd != 0) {
-                    numbersInMatrix++;
-                } 
+                int theNumberToAdd = Integer.parseInt(row[j]);
                 sudokuReturn[i][j] = theNumberToAdd;
             }
         }
         return sudokuReturn;
+    }
+    
+    public int numbersInSudokuMatrix() {
+        int numbers = 0;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (initialSudoku[i][j] != 0 || playableSudoku[i][j] != 0) {
+                    numbers++;
+                }
+            }
+        }
+        return numbers;
     }
         
     /**
@@ -204,12 +212,8 @@ public final class Sudoku implements Comparable<Sudoku> {
     public void modifyPlayableSudoku(int val, int row, int col) {
         if (initialSudoku[row][col] == 0) {
             if (val >= 0 && val <= 9) {
-                if (val == 0 && playableSudoku[row][col] != 0) {
-                    numbersInMatrix--;
-                } else if (val != 0 && playableSudoku[row][col] == 0) {
-                    numbersInMatrix++;
-                }
                 playableSudoku[row][col] = val;
+                numbersInMatrix = this.numbersInSudokuMatrix();
             }
         }
     }
