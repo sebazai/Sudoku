@@ -21,6 +21,7 @@ public final class Sudoku implements Comparable<Sudoku> {
     int[][] initialSudoku;
     int removeNumbers;
     SudokuGenerator generator;
+    int numbersInMatrix;
     
     @Override
     public int compareTo(Sudoku o) {
@@ -38,17 +39,23 @@ public final class Sudoku implements Comparable<Sudoku> {
         initialSudoku = new int[9 + 1][9 + 1];
         initialSudoku = deepCopy(solvedSudoku);
         removeDigitsFromInitialSudoku(difficulty);
+        numbersInMatrix = 81-difficulty;
     }
     
     public Sudoku(int id, String initial, String playable, String solved, Instant time) {
         this.id = id;
+        numbersInMatrix = 0;
         generator = new SudokuGenerator();
         this.setInitialSudoku(initial);
         this.setPlayableSudoku(playable);
         this.setSolvedSudoku(solved);
         this.time = time;
     }
-
+    
+    public SudokuGenerator getGenerator() {
+        return this.generator;
+    }
+    
     public int[][] getSolvedSudoku() {
         return solvedSudoku;
     }
@@ -74,7 +81,7 @@ public final class Sudoku implements Comparable<Sudoku> {
      * @param solved String from database
      */
     public void setSolvedSudoku(String solved) {
-        this.solvedSudoku = stringTo2DInt(solved);
+        this.solvedSudoku = stringTo2DInt(solved, false);
     }
     
     /**
@@ -82,7 +89,7 @@ public final class Sudoku implements Comparable<Sudoku> {
      * @param initial String from database
      */
     public void setInitialSudoku(String initial) {
-        this.initialSudoku = stringTo2DInt(initial);
+        this.initialSudoku = stringTo2DInt(initial, true);
     }
     
     /**
@@ -90,22 +97,27 @@ public final class Sudoku implements Comparable<Sudoku> {
      * @param playable String from database
      */
     public void setPlayableSudoku(String playable) {
-        this.playableSudoku = stringTo2DInt(playable);
+        this.playableSudoku = stringTo2DInt(playable, true);
     }
     
     
     /**
      * Convert a Arrays.deepToString() sudoku string into a 2D int array. Used to set the boards from the database
      * @param sudoku deepToString string of an int[10][10] array
+     * @param countNumbersInMatrix  counts the numbers in the matrix
      * @return int[][] array converted from the string
      */
-    public int[][] stringTo2DInt(String sudoku) {
+    public int[][] stringTo2DInt(String sudoku, boolean countNumbersInMatrix) {
         String[] strings = sudoku.replace("[", "").split("], ");
         int[][] sudokuReturn = new int[10][10];
         for (int i = 0; i < strings.length; i++) {
             String[] row = strings[i].replace("]", "").split(", ");
             for (int j = 0; j < row.length; j++) {
-                sudokuReturn[i][j] = Integer.parseInt(row[j]);
+                int theNumberToAdd= Integer.parseInt(row[j]);
+                if (countNumbersInMatrix && theNumberToAdd != 0) {
+                    numbersInMatrix++;
+                } 
+                sudokuReturn[i][j] = theNumberToAdd;
             }
         }
         return sudokuReturn;
@@ -127,21 +139,26 @@ public final class Sudoku implements Comparable<Sudoku> {
     
     /**
      * Shows one correct number from the solvedSudoku matrix on the gameboard where square is empty. 
-     * Checks also if the whole sudokuboard is already filled, so we don't end up in an endless recursion loop.
+     * Checks also if the whole sudokuboard is already filled and solved, so we don't end up in an endless recursion loop.
      * 
      * @return false if hints cannot be given, i.e. it is solved
      */
     public boolean giveAHintToThePlayer() {
-        if (generator.solver.checkIfFilledSudokuIsValid(deepCopy(playableSudoku), deepCopy(initialSudoku))) {
-                return false;
-        }
+//        if (generator.solver.checkIfFilledSudokuIsValid(deepCopy(playableSudoku), deepCopy(initialSudoku))) {
+//                return false;
+//        }
         int getRandomCell = (int) Math.floor((Math.random() * 81 + 1));
         int i = (getRandomCell / 9);
         int j = getRandomCell % 9;
         if (playableSudoku[i][j] == 0 && initialSudoku[i][j] == 0 && i < 9 && j < 9) {
             playableSudoku[i][j] = solvedSudoku[i][j];
+            numbersInMatrix++;
         } else {
-            giveAHintToThePlayer();
+            if (numbersInMatrix != 81) {
+                giveAHintToThePlayer();
+            } else {
+                return false;
+            }
         }
         return true;
     }
@@ -152,6 +169,9 @@ public final class Sudoku implements Comparable<Sudoku> {
     public void emptyPlayableSudokuMatrix() {
         for (int i = 0; i < playableSudoku.length; i++) {
             for (int j = 0; j < playableSudoku[0].length; j++) {
+                if (playableSudoku[i][j] != 0) {
+                    numbersInMatrix--;
+                }
                 playableSudoku[i][j] = 0;
             }
         }
@@ -187,6 +207,11 @@ public final class Sudoku implements Comparable<Sudoku> {
     public void modifyPlayableSudoku(int val, int row, int col) {
         if (initialSudoku[row][col] == 0) {
             if (val >= 0 && val <= 9) {
+                if (val == 0) {
+                    numbersInMatrix--;
+                } else {
+                    numbersInMatrix++;
+                }
                 playableSudoku[row][col] = val;
             }
         }

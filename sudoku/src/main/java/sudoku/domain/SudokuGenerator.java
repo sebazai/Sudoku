@@ -15,6 +15,10 @@ public class SudokuGenerator {
         solver = new SudokuSolver();
     }
     
+    public SudokuSolver getSolver() {
+        return this.solver;
+    }
+    
     /**
      * Generates a sudoku in the solvedSudoku array
      * 

@@ -85,7 +85,7 @@ public class SudokuTest {
             {9, 8, 7, 4, 6, 2, 1, 5, 3, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         };
-        int[][] copiedToArray = sudoku.stringTo2DInt(test);
+        int[][] copiedToArray = sudoku.stringTo2DInt(test, false);
         for (int i = 0; i < sudokuTable.length; i++) {
             for (int j = 0; j < sudokuTable[0].length; j++) {
                 if (sudokuTable[i][j] != copiedToArray[i][j]) {
