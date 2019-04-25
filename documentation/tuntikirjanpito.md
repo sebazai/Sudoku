@@ -32,4 +32,5 @@
 |	|2	|DAO testien tekeminen ja javadocin täydennystä
 |	|2	|Koodin refaktorointia, arkkitehtuuriin pakkauskaavio ja Javadoc täydennys
 |24.4.	|1	|Testien tekoa ja koodin siistimistä
-|yht.	|39	|
+|25.4	|2	|Bugin korjaus ja releasen teko + siistimistä ja dokumentointia
+|yht.	|41	|
