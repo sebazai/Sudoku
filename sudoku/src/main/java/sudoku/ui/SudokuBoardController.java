@@ -25,7 +25,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import sudoku.dao.DatabaseSudokuDao;
 import sudoku.dao.SudokuDao;
 import sudoku.domain.Sudoku;
 import sudoku.domain.SudokuSolver;

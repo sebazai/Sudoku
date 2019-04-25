@@ -27,6 +27,10 @@ public final class Sudoku implements Comparable<Sudoku> {
         return o.time.compareTo(this.time);
     }
     
+    /**
+     * Sudokus are created as int[10][10] due to the removeDigitsFromInitialSudoku method might otherwise return IndexOutOfBounds error
+     * @param difficulty Amount of digits to remove from the 81 digits in the sudoku, Maximum 80
+     */
     public Sudoku(int difficulty) {
         generator = new SudokuGenerator();
         solvedSudoku = generator.generateSudoku();
