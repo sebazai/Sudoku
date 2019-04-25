@@ -160,7 +160,7 @@ public final class Sudoku implements Comparable<Sudoku> {
                 return false;
             }
         }
-        return true;
+        return numbersInMatrix != 81;
     }
     
     /**
@@ -207,9 +207,9 @@ public final class Sudoku implements Comparable<Sudoku> {
     public void modifyPlayableSudoku(int val, int row, int col) {
         if (initialSudoku[row][col] == 0) {
             if (val >= 0 && val <= 9) {
-                if (val == 0) {
+                if (val == 0 && playableSudoku[row][col] != 0) {
                     numbersInMatrix--;
-                } else {
+                } else if (val != 0 && playableSudoku[row][col] == 0) {
                     numbersInMatrix++;
                 }
                 playableSudoku[row][col] = val;

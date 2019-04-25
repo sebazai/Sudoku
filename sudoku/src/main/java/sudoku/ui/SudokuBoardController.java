@@ -71,6 +71,7 @@ public class SudokuBoardController implements Initializable {
         if (!gameboard.giveAHintToThePlayer()) {
             if (gameboard.getGenerator().getSolver().checkIfFilledSudokuIsValid(gameboard.getPlayableSudoku(), gameboard.getInitialSudoku())) {
                 this.solved = true;
+                this.drawOnCanvas(canvas.getGraphicsContext2D());
                 this.sudokuSolvedAlert();
             }
         }
