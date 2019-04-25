@@ -16,6 +16,7 @@ Sovelluksen avulla käyttäjä pystyy pelaamaan sudoku peliä omalla tietokoneel
 
 [V. 1.0](https://github.com/sebazai/ot-harjoitustyo/releases/tag/v1.0)
 
+[V. 2.0](https://github.com/sebazai/ot-harjoitustyo/releases/tag/2.0)
 
 ## Komentorivitoiminnot
 
