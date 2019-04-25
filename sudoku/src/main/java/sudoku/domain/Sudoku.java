@@ -132,7 +132,7 @@ public final class Sudoku implements Comparable<Sudoku> {
         int getRandomCell = (int) Math.floor((Math.random() * 81 + 1));
         int i = (getRandomCell / 9);
         int j = getRandomCell % 9;
-        if (playableSudoku[i][j] == 0 && initialSudoku[i][j] == 0) {
+        if (playableSudoku[i][j] == 0 && initialSudoku[i][j] == 0 && i < 9 && j < 9) {
             playableSudoku[i][j] = solvedSudoku[i][j];
         } else {
             giveAHintToThePlayer();
