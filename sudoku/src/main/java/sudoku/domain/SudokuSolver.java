@@ -58,7 +58,6 @@ public class SudokuSolver {
      * 
      * @return true     
      */
-    
     public boolean checkIfColumnSafe(int[][] sudoku, int column, int number) {
         for (int i = 0; i < 9; i++) {
             if (sudoku[i][column] == number) {
@@ -68,6 +67,14 @@ public class SudokuSolver {
         return true;
     }
     
+    /**
+     * Checks if 3x3 box contains given number
+     * @param sudoku    the sudoku matrix where to check
+     * @param row   start row   
+     * @param column    start column
+     * @param number    the number to be checked
+     * @return  false if the number is in the 3x3 box
+     */
     public boolean checkIfBoxSafe(int[][] sudoku, int row, int column, int number) {
         for (int i = row - row % 3; i < row - row % 3 + 3; i++) {
             for (int j = column - column % 3; j < column - column % 3 + 3; j++) {
@@ -86,8 +93,6 @@ public class SudokuSolver {
     * 
     * @return   true    If the array doesn't contain the value zero
     */
-    
-    //If sudoku matrix contains zero, there's no solution
     public boolean sudokuContainsZeros(int[][] sudoku) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -106,8 +111,6 @@ public class SudokuSolver {
     *  
     * @return   true    If it is solvable
     */
-    
-    // Go through the sudoku matrix with backtracking and solve it.
     public boolean solveSudoku(int[][] sudoku) {
         boolean noEmptySquares = true;
         for (int i = 0; i < 9; i++) {

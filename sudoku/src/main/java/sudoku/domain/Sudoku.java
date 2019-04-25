@@ -126,20 +126,22 @@ public final class Sudoku implements Comparable<Sudoku> {
     }
     
     /**
-     * Shows one correct number from the solvedSudoku matrix on the gameboard where square is empty.
+     * Shows one correct number from the solvedSudoku matrix on the gameboard where square is empty. 
+     * Checks also if the whole sudokuboard is already filled, so we don't end up in an endless recursion loop.
+     * 
+     * @return false if hints cannot be given, i.e. it is solved
      */
     public boolean giveAHintToThePlayer() {
+        if (generator.solver.checkIfFilledSudokuIsValid(deepCopy(playableSudoku), deepCopy(initialSudoku))) {
+                return false;
+        }
         int getRandomCell = (int) Math.floor((Math.random() * 81 + 1));
         int i = (getRandomCell / 9);
         int j = getRandomCell % 9;
         if (playableSudoku[i][j] == 0 && initialSudoku[i][j] == 0 && i < 9 && j < 9) {
             playableSudoku[i][j] = solvedSudoku[i][j];
         } else {
-            if (generator.solver.checkIfFilledSudokuIsValid(playableSudoku, initialSudoku)) {
-                return false;
-            } else {
-                giveAHintToThePlayer();
-            }
+            giveAHintToThePlayer();
         }
         return true;
     }

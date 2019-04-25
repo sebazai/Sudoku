@@ -38,7 +38,6 @@ public class SudokuTest {
         sudoku = new Sudoku(35);
         generator = new SudokuGenerator();
         solver = new SudokuSolver();
-        
     }
     
     @After
@@ -274,10 +273,11 @@ public class SudokuTest {
     
     @Test
     public void giveAHintAddsOneNumberToThePlayableSudokuMatrix() {
+        sudoku.playableSudoku = new int[10][10];
         sudoku.giveAHintToThePlayer();
         int numbers = 0;
-        for (int i = 0; i < sudoku.playableSudoku.length; i++) {
-            for (int j = 0; j < sudoku.playableSudoku[i].length; j++) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
                 if (sudoku.playableSudoku[i][j] != 0) {
                     numbers++;
                 }
