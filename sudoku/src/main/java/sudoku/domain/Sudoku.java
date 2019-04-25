@@ -39,7 +39,7 @@ public final class Sudoku implements Comparable<Sudoku> {
         initialSudoku = new int[9 + 1][9 + 1];
         initialSudoku = deepCopy(solvedSudoku);
         removeDigitsFromInitialSudoku(difficulty);
-        numbersInMatrix = 81-difficulty;
+        numbersInMatrix = 81 - difficulty;
     }
     
     public Sudoku(int id, String initial, String playable, String solved, Instant time) {
