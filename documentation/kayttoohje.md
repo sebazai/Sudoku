@@ -34,6 +34,7 @@ Mikäli Sudoku on hankala, voit myös pyytää vihjettä, joka tuo yhden numeron
 
 <img src="https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/kuvat/loadscreen.png">
 
-Kyseisessä ruudussa voit valita vanhan pelin, jonka olet tallettanut. Viimeiseksi tallennettu peli on ensimmäisessä, pelit ovat järjestetty aikaleiman mukaan uusimmasta vanhimpaan. Kun lataat pelin ja jatkat pelaamista, niin ladattu peli katoaa listalta, joten muista tallettaa peli, mikäli se vielä jää keskeneräiseksi.
-
+Kyseisessä ruudussa voit valita vanhan pelin, jonka olet tallettanut. Viimeiseksi tallennettu peli on ensimmäisessä, pelit ovat järjestetty aikaleiman mukaan uusimmasta vanhimpaan. 
+Kun lataat pelin ja jatkat pelaamista, niin ladattu peli katoaa listalta, joten muista tallettaa peli, mikäli se vielä jää keskeneräiseksi.
+Lista näyttää 10 vanhinta peliä.
 
