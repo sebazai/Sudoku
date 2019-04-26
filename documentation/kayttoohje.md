@@ -20,6 +20,8 @@ Kun vaikeusaste on valittuna, aukeaa uusi Sudoku peli.
 
 ### Sudoku näkymä
 
+Sudoku näkymässä voit hiirellä valita ruudun tai käyttäen nuolinäppäimiä. Ruudut ottavat vain numeroita 0-9 välillä. Missä 0 tyhjentää valitun ruudun.
+
 <img src ="https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/kuvat/sudoku.png">
 
 Pelin voi ratkaista suoraan "Solve sudoku" -painiketta painamalla, tallettaa keskeneräisenä "Save and quit" -painiketta painamalla.
