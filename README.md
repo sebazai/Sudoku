@@ -20,7 +20,7 @@ Sovelluksen avulla käyttäjä pystyy pelaamaan sudoku peliä omalla tietokoneel
 
 ### Viikko 6
 
-[V. 2.1](https://github.com/sebazai/ot-harjoitustyo/releases/tag/2.1)
+[V. 2.2](https://github.com/sebazai/ot-harjoitustyo/releases/tag/2.2)
 
 ## Komentorivitoiminnot
 

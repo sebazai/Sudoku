@@ -1,12 +1,12 @@
 # Käyttöohje
 
-Lataa tiedosto [sudoku.jar](https://github.com/sebazai/ot-harjoitustyo/releases/download/2.1/sudoku-2.1.jar)
+Lataa tiedosto [sudoku.jar](https://github.com/sebazai/ot-harjoitustyo/releases/download/2.2/sudoku-2.2.jar)
 
 ## Ohjelman käynnistäminen
 
 Avaa ladattu tiedosto. Linuxilla terminaalin kautta komennolla
 ```
-java -jar sudoku-2.1.jar
+java -jar sudoku-2.2.jar
 ```
 
 ## Käyttöliittymän ohjeet
