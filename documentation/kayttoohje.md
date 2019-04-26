@@ -14,13 +14,13 @@ java -jar sudoku-2.1.jar
 #### Menu näkymä
 Sovellus käynnistyy menu näkymään, josta voit valita vaikeusasteen sudokulle tai ladata vanhan tallennetun pelin.
 
-<img src="https://github.com/sebazai/ot-harjoitustyo/tree/master/documentation/kuvat/menu.png" />
+<img src="https://github.com/sebazai/ot-harjoitustyo/tree/master/documentation/kuvat/menu.png">
 
 Kun vaikeusaste on valittuna, aukeaa uusi Sudoku peli.
 
 #### Sudoku näkymä
 
-<img src ="https://github.com/sebazai/ot-harjoitustyo/tree/master/documentation/kuvat/sudoku.png" />
+<img src ="https://github.com/sebazai/ot-harjoitustyo/tree/master/documentation/kuvat/sudoku.png">
 
 Pelin voi ratkaista suoraan "Solve sudoku" -painiketta painamalla, tallettaa keskeneräisenä "Save and quit" -painiketta painamalla.
 
@@ -32,7 +32,7 @@ Mikäli Sudoku on hankala, voit myös pyytää vihjettä, joka tuo yhden numeron
 
 #### Load game näkymä
 
-<img src="https://github.com/sebazai/ot-harjoitustyo/tree/master/documentation/kuvat/loadscreen.png" />
+<img src="https://github.com/sebazai/ot-harjoitustyo/tree/master/documentation/kuvat/loadscreen.png">
 
 Kyseisessä ruudussa voit valita vanhan pelin, jonka olet tallettanut. Viimeiseksi tallennettu peli on ensimmäisessä, pelit ovat järjestetty aikaleiman mukaan uusimmasta vanhimpaan. Kun lataat pelin ja jatkat pelaamista, niin ladattu peli katoaa listalta, joten muista tallettaa peli, mikäli se vielä jää keskeneräiseksi.
 
