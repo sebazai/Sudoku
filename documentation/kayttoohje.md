@@ -9,16 +9,16 @@ Avaa ladattu tiedosto. Linuxilla terminaalin kautta komennolla
 java -jar sudoku-2.1.jar
 ```
 
-### Käyttöliittymän ohjeet
+## Käyttöliittymän ohjeet
 
-#### Menu näkymä
+### Menu näkymä
 Sovellus käynnistyy menu näkymään, josta voit valita vaikeusasteen sudokulle tai ladata vanhan tallennetun pelin.
 
 <img src="https://github.com/sebazai/ot-harjoitustyo/tree/master/documentation/kuvat/menu.png">
 
 Kun vaikeusaste on valittuna, aukeaa uusi Sudoku peli.
 
-#### Sudoku näkymä
+### Sudoku näkymä
 
 <img src ="https://github.com/sebazai/ot-harjoitustyo/tree/master/documentation/kuvat/sudoku.png">
 
@@ -30,7 +30,7 @@ Mikäli Sudoku on hankala, voit myös pyytää vihjettä, joka tuo yhden numeron
 
 "Return to menu" vie takaisin menu ruutuun, tallentamatta peliä.
 
-#### Load game näkymä
+### Load game näkymä
 
 <img src="https://github.com/sebazai/ot-harjoitustyo/tree/master/documentation/kuvat/loadscreen.png">
 
