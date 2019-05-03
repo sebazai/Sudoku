@@ -14,7 +14,7 @@ Automatisoitujen testeillä on testattu pakkauksen [sudoku.domain](https://githu
 
 ### Testauskattavuus
 
-Käyttöliittymää lukuunottamatta sovelluksen testauksen rivikattavuus on 99 % ja haarautumakattavuus on 95 %.
+Käyttöliittymää lukuunottamatta sovelluksen testauksen rivikattavuus on 98 % ja haarautumakattavuus on 93 %.
 
 <img src="https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/kuvat/testikattavuus.png">
 
