@@ -6,7 +6,7 @@
 package sudoku.domain;
 
 /**
- *
+ * Class used to solve an incomplete Sudoku and methods to help if numbers can be placed in matrix or if Sudoku is solved
  * @author sebserge
  */
 public class SudokuSolver {

@@ -9,7 +9,7 @@ import java.time.Instant;
 import java.util.Arrays;
 
 /**
- *
+ * One sudoku class containing the gameboard and methods to modify the sudoku matrix
  * @author sebserge
  */
 public final class Sudoku implements Comparable<Sudoku> {

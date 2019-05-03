@@ -17,7 +17,10 @@ import javafx.stage.Stage;
 import sudoku.dao.SudokuDao;
 import sudoku.domain.Sudoku;
 
-
+/**
+ * startscreen.fxml controller
+ * @author sebserge
+ */
 public class StartScreenController implements Initializable {
     
     @FXML Button hard;

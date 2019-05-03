@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import sudoku.dao.DatabaseSudokuDao;
 
 /**
- *
+ * JavaFX Main class where application is launched and the database connection created
  * @author sebserge
  */
 public class SudokuUi extends Application {

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- *
+ * Interface used by the Controllers in sudoku.ui package, except the SudokuUi
  * @author sebserge
  */
 

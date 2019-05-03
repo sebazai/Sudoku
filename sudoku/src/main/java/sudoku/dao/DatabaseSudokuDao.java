@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 import sudoku.domain.Sudoku;
 /**
- *
+ * Class to connect and manage the database
  * @author sebserge
  */
 public class DatabaseSudokuDao implements SudokuDao<Sudoku, Integer> {

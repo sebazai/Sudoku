@@ -29,7 +29,7 @@ import sudoku.dao.SudokuDao;
 import sudoku.domain.Sudoku;
 
 /**
- *
+ * loadscreen.fxml controller
  * @author sebserge
  */
 public class LoadScreenController implements Initializable {

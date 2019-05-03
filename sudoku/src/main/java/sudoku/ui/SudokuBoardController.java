@@ -27,6 +27,11 @@ import sudoku.dao.SudokuDao;
 import sudoku.domain.Sudoku;
 import sudoku.domain.SudokuSolver;
 
+
+/**
+ * sudokuboard.fxml controller
+ * @author sebserge
+ */
 public class SudokuBoardController implements Initializable {
     
     @FXML Button solve;

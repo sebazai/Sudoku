@@ -5,6 +5,10 @@
  */
 package sudoku.domain;
 
+/**
+ * Class used to generate a complete sudoku
+ * @author sebserge
+ */
 
 public class SudokuGenerator {
     int[][] solvedSudoku;
