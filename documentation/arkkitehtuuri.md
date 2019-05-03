@@ -2,7 +2,7 @@
 
 ## Rakenne
 
-Ohjelman rakenne noudattaa kaksitasoista kerrosarkkitehtuuria. Koodin pakkausrakenne on seuraavanlainen:
+Ohjelman rakenne noudattaa kolmitasoista kerrosarkkitehtuuria. Koodin pakkausrakenne on seuraavanlainen:
 
 
 <img src="https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/kuvat/pakkauskaavio.png">
@@ -18,13 +18,13 @@ Käyttöliittymä sisältää kolme eri näkymää.
 * sudoku pelin näkymä
 * pelin latausnäkymä
 
-Jokainen näkymä on toteutettuna omana Scene-oliona. Apuna Scenejen tekemiseen on käytetty Scene Builder ohjelmaa, jokaisella näkymällä on oma Controller, jolla hallinoidaan näkymän eri toiminnallisuuksia.
+Jokainen näkymä on toteutettuna omana [Scene](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Scene.html)-oliona. Apuna Scenejen tekemiseen on käytetty [Scene Builder](https://gluonhq.com/products/scene-builder/) ohjelmaa, jokaisella näkymällä on oma [Controller](https://github.com/sebazai/ot-harjoitustyo/tree/master/sudoku/src/main/java/sudoku/ui), jolla hallinoidaan näkymän eri toiminnallisuuksia. Näkymät jotka on luotu Scene Builderilla sijaitsevat [/sudoku/src/main/resources/fxml/](https://github.com/sebazai/ot-harjoitustyo/tree/master/sudoku/src/main/resources/fxml) kansiossa.
 
 Käyttöliittymä on pyritty eristämään sovelluslogiikasta, käyttöliittymä käyttää ainoastaan tarvittaessa sovelluslogiikan metodeja ja DAO luokkia.
 
 Kun sovellus käynnistetään, aloitusnäkymästä voi valita Sudokun vaikeusasteen, joka kutsuu Sudoku-luokkaa ja siirtyy Sudoku pelin näkymään vaikeusasteella määritetyllä Sudokulla. Tämä näkymä renderöi generoidun Sudokun ja tulostaa sen uuteen näkymään. Menu näkymässä voit myös valita ladata vanhan keskeneräisen pelin, jonka olet tallettanut. Latausnäkymä näyttää vain 10 vanhinta tallennettua peliä.
 
-Sudoku näkymässä voi navigoida eri ruutuihin hiirellä tai nuolinäppäimiä käyttäen. Numeroita syötetään ruudukon tyhjiin ruutuihin.
+Sudoku näkymässä voi navigoida eri ruutuihin hiirellä tai nuolinäppäimiä käyttäen. Numeroita välillä 0-9 syötetään ruudukon tyhjiin ruutuihin.
 
 ## Sovelluslogiikka
 
@@ -76,7 +76,7 @@ Luokat noudattavat Data Access Object -suunnittelumallia ja ne on tarvittaessa m
 
 ## Ohjelmaan jääneet heikkoudet
 
-Virheilmoituksia ei käsitellä lainkaan fiksusti, jos näitä ilmaantuisi.
+Virheilmoituksia ei käsitellä lainkaan fiksusti, jos näitä ilmaantuisi käyttäjälle. Mikäli löydät jonkin bugin ohjelmasta, jota ei ole mainittu tässä dokumentaatiossa, voit avata [issuen](https://github.com/sebazai/ot-harjoitustyo/issues) tässä repossa. Kuvailethan ongelman mahdollisimman tarkasti ja tarvittaessa käytät kuvia.
 
 ### Sovelluslogiikka
 
