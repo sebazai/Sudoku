@@ -26,6 +26,11 @@ Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
 
 Melkein kaikki [määrittelydokumentin](https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/vaatimusmaarittely.md) ja käyttöohjeen listaamat toiminallisuudet on käyty läpi.
 
+Läpikäymättä tai huonosti testattu ovat:
+* Pelin lataus/tallennus
+* Vinkin pyytäminen, mikäli löytyy useampi ratkaisu sudokuun
+* JavaFX graafinen käyttöliittymä kokonaan testaamatta
+
 Suuri osa apumetodeista mitä sovellus käyttää on testattu erikseen. 
 
 #### DAO

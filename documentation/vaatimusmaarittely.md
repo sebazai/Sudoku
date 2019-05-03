@@ -23,4 +23,4 @@ Sovelluksen avulla käyttäjä voi luoda satunnaisen pelattavan Sudoku pelin eri
 - highscore listaus
 - muistiinpanojen tekeminen pelilaudalle
 - hiirellä valita numerot 1-9 ja tyhjennä ruutu (eli 0) painike
-
+- väri muuttuisi punaiseksi, mikäli kyseinen numero ei kävisi ruutuun
