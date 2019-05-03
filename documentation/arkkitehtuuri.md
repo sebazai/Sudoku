@@ -59,6 +59,13 @@ Kun käyttäjä käynnistää ohjelman hän voi valita vaikeusasteen sudokulle, 
 
 Sekvenssikaaviossa on pyritty aukaisemaan mahdollisimman tarkasti kuinka sudoku luodaan, valitettavasti koodissa on suuri määrä rekursiokutsuja, joten sekvenssikaavio on näiden osalta hieman puuttellinen.
 
+### Sudoku pelin lataaminen
+
+Koska Sudoku pelin lataaminen tapahtuu suurin osin graafisen käyttöliittymän kautta, niin seuraava sekvenssikaavio on yleismalkaisesti tehty, missä ei ole läheskään otettu huomioon kaikkia JavaFX ja FXML:n tarvittavia metodeja. Seuraava sekvenssikaavio kuvaa siis pelin käynnistymisestä pelin lataamiseen, olettaen, että yksi peli on tallennettuna ja se on ainoa listassa indeksissä 0. 
+
+<img src="https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/kuvat/loadgamesequence.png">
+
+Oleellista sekvenssikaaviossa on se, että tietokannasta haetaan lista tallennetuista peleistä, näistä luodaan näkymään painikkeita nimellä "Game x", missä x on numero. Pelejä voi maksimissaan olla 10, sillä tietokannan palauttama lista on rajoitettu 10 ensimmäiseen riviin.
 
 ## Tietojen pysyväistallennus
 
