@@ -74,4 +74,18 @@ Pakkauksen sudoku.dao luokka DatabaseSudokuDao huolehtii tietojen tallettamisest
 Luokat noudattavat Data Access Object -suunnittelumallia ja ne on tarvittaessa mahdollista korvata esim. tallettamalla muualle kuin tietokantaan, kuten tiedostoon. Luokka on eristetty rajapinnan SudokuDao taakse ja sovelluslogiikka ei ole suoraan yhteydessä tietokantaan.
 
 
+## Ohjelmaan jääneet heikkoudet
 
+Virheilmoituksia ei käsitellä lainkaan fiksusti, jos näitä ilmaantuisi.
+
+### Sovelluslogiikka
+
+Mikäli generoituisi sudoku joka voisi sisältää kaksi tai useamman ratkaisun, niin vihjeen antaminen perustuu yhteen ratkaisuun ja täten vihje voi olla huono tai väärä, tällä hetkellä vihjeen antaminen perustuu generoituun valmiiseen sudokuun, joka on tallennettu solvedSudoku kaksiuloitteiseen listaan ja poimii täältä numeron jota ei ole pelilaudalla. 
+
+### Tietokanta
+
+Mikäli tietokannan poistaa kun peli on pyörimässä tulostuu virheilmoitukset konsoliin. 
+
+### Käyttöliittymä
+
+Koko pelilauta piirretään [SudokuBoardController](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/java/sudoku/ui/SudokuBoardController.java) tiedostossa aina kun lisätään numero tai siirrytään ruudusta toiseen, eli hitaalla koneella tämä voisi aiheuttaa hidastusta. Tämä olisi fiksuinta tehdä kahdella päällekkäisellä Canvaksella, jossa alimmassa olisi ruudukot ja ylempi olisi numerot ja ympyrä mikä ruutu on valittuna, jolloin piirtyisi vähemmän ja voisi nopeuttaa piirtämistä ruudulle.
