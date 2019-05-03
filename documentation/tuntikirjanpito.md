@@ -35,4 +35,5 @@
 |25.4	|2	|Bugin korjaus ja releasen teko + siistimistä ja dokumentointia
 |26.4.	|1	|Käyttöohje, dokumentaatiota ja release 2.2
 |3.5.	|2	|Sekvenssikaavio, dokumentaation päivitystä
-|yht.	|44	|
+|	|3	|Testausdokumentaatio, javadoc täydennys ja final release sekä kaikkien dokumentaatioiden läpilukeminen
+|yht.	|47	|

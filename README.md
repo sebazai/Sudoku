@@ -16,13 +16,17 @@ Sovelluksen avulla käyttäjä pystyy pelaamaan sudoku peliä omalla tietokoneel
 
 ## Releaset
 
-### Viikko 5
+### Final/Viikko 7
 
-[V. 1.0](https://github.com/sebazai/ot-harjoitustyo/releases/tag/v1.0)
+[Final](https://github.com/sebazai/ot-harjoitustyo/releases/tag/3.0)
 
 ### Viikko 6
 
 [V. 2.2](https://github.com/sebazai/ot-harjoitustyo/releases/tag/2.2)
+
+### Viikko 5
+
+[V. 1.0](https://github.com/sebazai/ot-harjoitustyo/releases/tag/v1.0)
 
 ## Komentorivitoiminnot
 
