@@ -24,13 +24,13 @@ Sudoku näkymässä voit hiirellä valita ruudun tai käyttäen nuolinäppäimi�
 
 <img src ="https://github.com/sebazai/ot-harjoitustyo/blob/master/documentation/kuvat/sudoku.png">
 
-Pelin voi ratkaista suoraan "Solve sudoku" -painiketta painamalla, tallettaa keskeneräisenä "Save and quit" -painiketta painamalla.
+Pelin voi ratkaista suoraan _Solve sudoku_ -painiketta painamalla, tallettaa keskeneräisenä _Save and quit_ -painiketta painamalla.
 
-Mikäli Sudoku on hankala, voit myös pyytää vihjettä, joka tuo yhden numeron ruudulle, tämä tapahtuu painamalla "HINT".
+Mikäli Sudoku on hankala, voit myös pyytää vihjettä, joka tuo yhden numeron ruudulle, tämä tapahtuu painamalla _HINT_.
 
-"Empty board" -painike tyhjentää sinun lisäämäsi numerot ruudulta.
+_Empty board_ -painike tyhjentää pelaajan lisäämät numerot ruudulta.
 
-"Return to menu" vie takaisin menu ruutuun, tallentamatta peliä.
+_Return to menu_ vie takaisin menu ruutuun, tallentamatta peliä.
 
 ### Load game näkymä
 
