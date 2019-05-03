@@ -34,4 +34,5 @@
 |24.4.	|1	|Testien tekoa ja koodin siistimistä
 |25.4	|2	|Bugin korjaus ja releasen teko + siistimistä ja dokumentointia
 |26.4.	|1	|Käyttöohje, dokumentaatiota ja release 2.2
-|yht.	|42	|
+|3.5.	|2	|Sekvenssikaavio, dokumentaation päivitystä
+|yht.	|44	|
