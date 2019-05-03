@@ -153,7 +153,7 @@ public class SudokuSolverTest {
     }
     
     @Test
-    public void checkIfFilledSudokuIsValidWithAnInvladinBoard() {
+    public void checkIfFilledSudokuIsValidWithAnInvalidBoard() {
         int[][] playableSudoku = new int[][]{
             {0,2,0,4,5,6,7,8,9},
             {4,5,6,7,8,9,1,2,3},
