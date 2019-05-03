@@ -14,9 +14,9 @@ Pakkaus _sudoku.ui_ sisältää JavaFX ja Scene Builderilla toteutetun käyttöl
 
 Käyttöliittymä sisältää kolme eri näkymää.
 
-* aloitusnäkymä
-* sudoku pelin näkymä
-* pelin latausnäkymä
+* [aloitusnäkymä](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/resources/fxml/startscreen.fxml)
+* [sudoku pelin näkymä](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/resources/fxml/sudokuboard.fxml)
+* [pelin latausnäkymä](https://github.com/sebazai/ot-harjoitustyo/blob/master/sudoku/src/main/resources/fxml/loadscreen.fxml)
 
 Jokainen näkymä on toteutettuna omana [Scene](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Scene.html)-oliona. Apuna Scenejen tekemiseen on käytetty [Scene Builder](https://gluonhq.com/products/scene-builder/) ohjelmaa, jokaisella näkymällä on oma [Controller](https://github.com/sebazai/ot-harjoitustyo/tree/master/sudoku/src/main/java/sudoku/ui), jolla hallinoidaan näkymän eri toiminnallisuuksia. Näkymät jotka on luotu Scene Builderilla sijaitsevat [/sudoku/src/main/resources/fxml/](https://github.com/sebazai/ot-harjoitustyo/tree/master/sudoku/src/main/resources/fxml) kansiossa.
 
